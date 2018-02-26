@@ -13,6 +13,7 @@ public class SmallStoreView extends View{
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		super.update(arg0, arg1);
+		System.out.println("Hej");
 	}
 
 }
