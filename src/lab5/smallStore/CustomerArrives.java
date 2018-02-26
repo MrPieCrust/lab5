@@ -9,7 +9,11 @@ public class CustomerArrives {
 	private CreateCustomer customerFactory;
 	private ArrayList<Customer> allCustomers;
 	
+	public CustomerArrives(SmallStoreState state) {
+		this.customerFactory = state.customerFactory;
+	}
+	
 	private void createCustomer() {
-		allCustomers.add((customerFactory).newCustomer());
+		allCustomers.add(customerFactory.newCustomer());
 	}
 }
