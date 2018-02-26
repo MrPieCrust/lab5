@@ -11,6 +11,17 @@ public class CustomerArrives {
 	
 	public CustomerArrives(SmallStoreState state) {
 		this.customerFactory = state.customerFactory;
+		state.eventHappened();
+		if (!state.isFull()) {
+			createCustomer();
+		}
+		else if(state.currentTime >= state.closingTime) {
+			
+		}
+		else {
+			state.eventHappened();
+			state.missedCustomers++;
+		}
 	}
 	
 	private void createCustomer() {

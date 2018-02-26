@@ -19,6 +19,7 @@ public class SmallStoreState extends State {
 	double avTimeQueue = 0;
 	public final int maxCustomers = 20;
 	public final int maxRegisters = 4;
+	public final double closingTime = 15;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
 	SmallStoreView storeView;
@@ -31,6 +32,14 @@ public class SmallStoreState extends State {
 		this.addObserver(storeView);
 		
 		
+	}
+	boolean isFull() {
+		if(numberOfCustomers==maxCustomers) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	void eventHappened() {
 		updateAll();
