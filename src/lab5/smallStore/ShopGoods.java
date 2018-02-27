@@ -18,7 +18,7 @@ public class ShopGoods extends Event{
 	}
 	
 	void preformEvent() {
-		if(state.regQueue.isEmpty()) {
+		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
 			name = "Customer goes to pay";
 			state.eventHappened();
 			timeNextEvent = state.timeElapsed + timeKeeper.calcPay();

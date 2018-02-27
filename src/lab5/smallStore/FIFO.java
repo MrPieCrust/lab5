@@ -8,25 +8,16 @@ import lab5.smallStore.customer.Customer;
 
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
-	private ArrayList<Register> registers = new ArrayList<Register>();
+//	private ArrayList<Register> registers = new ArrayList<Register>();
 	private SmallStoreState state;
 	int freeRegisters; 
 	int openRegisters;
 
-	private ArrayList<Integer> nrOfReg = new ArrayList<Integer>();
-	private SmallStoreState state;
-	private boolean isEmpty1 = true;
-	private boolean isEmpty2 = true;
-	private boolean isEmpty3 = true;
-	private boolean isEmpty4 = true;
 
 	public FIFO(SmallStoreState state) {
 		this.state = state;
 		openRegisters = 1;
 		freeRegisters = 1;
-//		for (int i=0; i<numRegister; i++) {
-//			registers.add(new Register());
-//		}
 		
 	}
 	public void add(Customer item) {
@@ -39,6 +30,7 @@ public class FIFO{
 		if (regQueue.size() > 0) {
 			new CustomerPays(state, state.timeElapsed + state.timeKeeper.calcPay(), regQueue.get(0));
 			regQueue.remove(0);
+			freeRegisters--;
 
 		} else {
 			throw new NoSuchElementException();
@@ -66,73 +58,37 @@ public class FIFO{
 		return regQueue.size();
 	}
 
-//	private Customer getIndex(int i) {
-//		return regQueue.get(i);
-//	}
-//
-//	public String toString() {
-//		String finalString = "Queue: ";
-//		for (int i = 0; i < regQueue.size(); i++) {
-//			finalString += "(" + String.valueOf(regQueue.get(i)) + ") ";
-//		}
-//		return finalString;
-//	}
 	public void regStat() {
 		
 	}
 
 }
-class Register{
-	private boolean open = false;
-	private boolean free = false;
-	
-	void changeOpen() {
-		if(open) {
-			open=false;
-		}
-		else {
-			open=true;
-		}
-	}
-
-	void changeFree() {
-		if(free) {
-			free = false;
-		}
-		else {
-			free = true;
-		}
-	}
-	public boolean isOpen() {
-		return open;
-	}
-	public boolean isFree() {
-		return free;
-	}
-
-	
+//class Register{
+//	private boolean open = false;
+//	private boolean free = false;
 //	
-//	public void regStat() {
-//        if(nrOfReg.size() <= state.maxRegisters) {
-//        //int counter = 0;
-//            if(regQueue.size() >= 0) {
-//                    if(isEmpty1 == true) {
-//                        removeFirst(); //tar bort först ur kön
-//                        isEmpty1 = false;
-//                        state.payed();
-//                        isEmpty = true;
-//                    } else if(isEmpty2 == true) {
-//                        removeFirst(); 
-//                        isEmpty1 = false;
-//                    } else if(isEmpty3 == true) {
-//                        removeFirst(); 
-//                        isEmpty1 = false;
-//                    } else if(isEmpty2 == true) {
-//                        removeFirst(); 
-//                        isEmpty1 = false;
-//                    }
-//            }
+//	void changeOpen() {
+//		if(open) {
+//			open=false;
+//		}
+//		else {
+//			open=true;
+//		}
+//	}
 //
-//        }
-//    }
+//	void changeFree() {
+//		if(free) {
+//			free = false;
+//		}
+//		else {
+//			free = true;
+//		}
+//	}
+//	public boolean isOpen() {
+//		return open;
+//	}
+//	public boolean isFree() {
+//		return free;
+//	}
 
+	

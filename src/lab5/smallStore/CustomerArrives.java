@@ -8,7 +8,6 @@ import lab5.smallStore.customer.Customer;
 
 public class CustomerArrives extends Event{
 	private CreateCustomer customerFactory;
-	ArrayList<Customer> allCustomers;
 	private double timeNextEvent;
 	
 	public CustomerArrives(SmallStoreState state) {

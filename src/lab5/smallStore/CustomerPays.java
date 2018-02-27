@@ -9,7 +9,6 @@ public class CustomerPays extends Event{
 	public CustomerPays(SmallStoreState state, double timeToEx, Customer customer) {
 		this.state = state;
 		this.timeToEx = timeToEx;
-		this.customer = customer;
 		state.timeKeeper = timeKeeper;
 		name = "Payed at the register";
 		addToEventQueue();
@@ -22,6 +21,7 @@ public class CustomerPays extends Event{
 		state.regQueue.freeRegisters++;
 		if(state.regQueue.size()>0) {
 			state.regQueue.removeFirst();
+			
 		}
 	}
 }
