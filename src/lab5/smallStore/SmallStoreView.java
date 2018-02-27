@@ -71,7 +71,7 @@ public class SmallStoreView extends View {
 		
 		
 		
-		System.out.println(state.currentTime + "    " + arg0  + KUND-ID + �ppen/str�ng + antal lediga kassor
+		System.out.println(currentTime + "    " + arg0  + KUND-ID + �ppen/str�ng + antal lediga kassor
 				+total tid b�da varit lediga+ antal i butiken + antal som betalat + antal ej kommit in pga fullt
 				+ antal som tvingats k�a + summa tid i k� + hela kassak�n);
 		
@@ -94,7 +94,7 @@ public class SmallStoreView extends View {
 		 * Genomsnittlig k�-tid
 		 */
 		System.out.println("RESULTAT ========");
-		System.out.println("1) Av " + TOTALT ANTAL KUNDER + "kunder handlade" + "medan " + ANTAL MISSADE + "missades");
+		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
 		System.out.println("2) Total tid " + N + "varit lediga: " + TOTAL TID +" te");
 		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden fr�n �ppning till sista kunden betalat");
 		System.out.println("3) Total tid" + KUNDER SOM K�A + "tvingats k�a: " + TOTAL K�TID + "te");
