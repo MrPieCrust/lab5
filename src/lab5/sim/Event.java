@@ -16,8 +16,12 @@ public class Event {
 	public String getName() {
 		return name;
 	}
+	public double getExTime() {
+		return timeToEx;
+	}
 	
 	protected void performEvent() {
 		
 	}
+	
 }

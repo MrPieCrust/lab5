@@ -9,15 +9,14 @@ import lab5.smallStore.customer.Customer;
 public class CustomerArrives extends Event{
 	private CreateCustomer customerFactory;
 	ArrayList<Customer> allCustomers;
-	private final String name = "Arrives";
 	private double timeNextEvent;
-	private SmallStoreState state;
 	
 	public CustomerArrives(SmallStoreState state) {
 		this.state = state;
 		this.customerFactory = state.customerFactory;
 		timeKeeper = state.timeKeeper;
 		timeToEx = timeKeeper.calcNextCustomer();
+		name = "Arrives";
 	}
 	
 	void preformEvent() {
@@ -39,11 +38,5 @@ public class CustomerArrives extends Event{
 		timeNextEvent = timeKeeper.calcShop();
 		new ShopGoods(state, timeNextEvent);
 		
-	}
-	public double getExTime() {
-		return timeToEx;
-	}
-	public String getName() {
-		return name;
 	}
 }
