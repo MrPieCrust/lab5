@@ -15,8 +15,9 @@ public class CustomerArrives extends Event{
 		this.state = state;
 		this.customerFactory = state.customerFactory;
 		timeKeeper = state.timeKeeper;
-		timeToEx = timeKeeper.calcNextCustomer();
+		timeToEx = state.timeElapsed + timeKeeper.calcNextCustomer();
 		name = "Arrives";
+		addToEventQueue();
 	}
 	
 	void preformEvent() {
@@ -36,7 +37,8 @@ public class CustomerArrives extends Event{
 	private void createCustomer() {
 		allCustomers.add(customerFactory.newCustomer());
 		timeNextEvent = timeKeeper.calcShop();
-		new ShopGoods(state, timeNextEvent);
+		int custID = allCustomers.size() - 1;
+		new ShopGoods(state, timeNextEvent, allCustomers.get(custID));
 		
 	}
 }
