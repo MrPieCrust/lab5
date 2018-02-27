@@ -67,11 +67,12 @@ public class SmallStoreView extends View {
 		
 		
 		super.update(arg0, arg1);
-		double currentTime = state.currentTime;
+		double currentTime = state.timeElapsed;
 		
 		
 		
-		System.out.println(currentTime + "    " + arg0  + KUND-ID + öppen/stöng + antal lediga kassor
+		
+		System.out.println(currentTime + "    " + arg0  + getCustomerID() + öppen/stäng + antal lediga kassor
 				+ total tid båda varit lediga + antal i butiken + antal som betalat + antal ej kommit in pga fullt
 				+ antal som tvingats köa + summa tid i kö + hela kassakön);
 		

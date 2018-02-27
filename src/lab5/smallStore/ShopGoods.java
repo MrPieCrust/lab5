@@ -6,7 +6,7 @@ public class ShopGoods extends Event{
 	private double timeNextEvent;
 	private SmallStoreState state;
 	private TimeKeeper timeKeeper;
-	private Customer customer;
+	private Customer customer; 
 	
 	public ShopGoods(SmallStoreState state, double timeToEx, Customer customer) {
 		this.timeToEx = timeToEx;
@@ -30,6 +30,9 @@ public class ShopGoods extends Event{
 			state.regQueue.add(customer);
 		
 		}
+	}
+	int getCustomerID() {
+		return customer.getCustomerID();
 	}
 	
 }
