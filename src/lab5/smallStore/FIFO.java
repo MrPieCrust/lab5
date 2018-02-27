@@ -65,26 +65,26 @@ public class FIFO{
 	
 	
 	public void regStat() {
-		if(nrOfReg.size() <= state.maxRegisters) {
-		//int counter = 0;
-			if(regQueue.size() >= 0) {
-					if(isEmpty1 == true) {
-						removeFirst(); //tar bort först ur kön
-						isEmpty1 = false;
-					} else if(isEmpty2 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					} else if(isEmpty3 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					} else if(isEmpty2 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					}
-					
-				}
+        if(nrOfReg.size() <= state.maxRegisters) {
+        //int counter = 0;
+            if(regQueue.size() >= 0) {
+                    if(isEmpty1 == true) {
+                        removeFirst(); //tar bort först ur kön
+                        isEmpty1 = false;
+                        state.payed();
+                        isEmpty = true;
+                    } else if(isEmpty2 == true) {
+                        removeFirst(); 
+                        isEmpty1 = false;
+                    } else if(isEmpty3 == true) {
+                        removeFirst(); 
+                        isEmpty1 = false;
+                    } else if(isEmpty2 == true) {
+                        removeFirst(); 
+                        isEmpty1 = false;
+                    }
+            }
 
-			}
-		}
-
+        }
+    }
 }
