@@ -3,32 +3,34 @@ package lab5.smallStore;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class FIFO{
-	private ArrayList<Object> theList = new ArrayList<Object>();
+import lab5.smallStore.customer.Customer;
 
-	public void add(Object item) {
-		theList.add(item);
+public class FIFO{
+	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
+
+	public void add(Customer item) {
+		regQueue.add(item);
 	}
 
 	public void removeFirst() {
-		if (theList.size() > 0) {
-			theList.remove(0);
+		if (regQueue.size() > 0) {
+			regQueue.remove(0);
 		} else {
 			throw new NoSuchElementException();
 		}
 	}
 
-	public Object first() {
-		if (theList.size() == 0) {
+	public Customer first() {
+		if (regQueue.size() == 0) {
 			throw new NoSuchElementException();
 		} else {
-			return theList.get(0);
+			return regQueue.get(0);
 		}
 	}
 
 
 	public boolean isEmpty() {
-		if (theList.size() == 0) {
+		if (regQueue.size() == 0) {
 			return true;
 		} else {
 			return false;
@@ -36,17 +38,17 @@ public class FIFO{
 	}
 
 	public int size() {
-		return theList.size();
+		return regQueue.size();
 	}
 
-	private Object getIndex(int i) {
-		return theList.get(i);
+	private Customer getIndex(int i) {
+		return regQueue.get(i);
 	}
 
 	public String toString() {
 		String finalString = "Queue: ";
-		for (int i = 0; i < theList.size(); i++) {
-			finalString += "(" + String.valueOf(theList.get(i)) + ") ";
+		for (int i = 0; i < regQueue.size(); i++) {
+			finalString += "(" + String.valueOf(regQueue.get(i)) + ") ";
 		}
 		return finalString;
 	}
