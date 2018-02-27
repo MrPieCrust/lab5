@@ -11,7 +11,9 @@ public class Simulator {
 	}
 	public void run() {
 		while (state.stopFlag==false) {
-			while ()
+			while (eventQueue.length()>0) {
+				eventQueue
+			}
 		}
 	}
 
