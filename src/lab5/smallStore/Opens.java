@@ -8,6 +8,7 @@ public class Opens extends Event{
 		this.state = state;
 		this.timeKeeper = state.timeKeeper;
 		timeToEx = 0;
+		name = "The Store opens";
 		new CustomerArrives(state).preformEvent();
 		addToEventQueue();
 	}

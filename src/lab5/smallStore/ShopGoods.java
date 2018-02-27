@@ -14,6 +14,7 @@ public class ShopGoods extends Event{
 		this.state = state;
 		this.customer = customer;
 		state.timeKeeper = timeKeeper;
+		name = "Customer" + customer.getCustomerID() + "goes to collect goods";
 		addToEventQueue();
 		
 	}

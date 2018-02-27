@@ -7,61 +7,61 @@ import lab5.smallStore.SmallStoreState;
 import lab5.random.*;
 
 public class SmallStoreView extends View {
-	
+
 	private SmallStoreState state;
 	private FIFO regQueue;
 	private ExponentialRandomStream random;
-	
+
 	public SmallStoreView(SmallStoreState state) {
 		this.state = state;
 		this.regQueue = state.regQueue;
-		
+
 	}
-	
-	/** Printar alla parametrar från början */
-	
+
+	/** Printar alla parametrar frï¿½n bï¿½rjan */
+
 	public void printParameters() {
-		
+
 		int N = state.maxRegisters;
 		int M = state.maxCustomers;
-		/** Det som behövs: 
-		 * Ankomsthastighet lambda
-		 * Plocktider
-		 * Betaltider
-		 * Frö
+		double L = state.exponentLambda;
+		double Pmin = state.uniformLowerShop;
+		double Pmax = state.uniformLowerShop;
+		double Bmin = state.uniformLowerPay;
+		double Bmax = state.uniformUpperPay;
+		long F = state.fseed;
+		/**
+		 * Det som behï¿½vs: Ankomsthastighet lambda Plocktider Betaltider Frï¿½
 		 */
-		
-		
-		System.out.println("PARAMETRAR" +  "\n======="); //Parametrar
-		System.out.println("Antal kassor, N..........: " + N); //Antal kassor
-		System.out.println("Max som ryms, M..........: " + M); //Max personer i butik
-		System.out.println("Ankomsthastighet, lamba..: " + L); //Ankomsthastighet
-		System.out.println("Plocktider, [P_min..Pmax]: " + P); //Plocktid
-		System.out.println("Betaltider, [K_min..Kmax]: " + B); //Betaltid
-		System.out.println("Frö, f...................: " + F); //Frö
-		
-		
-		System.out.println("FÖRLOPP" +  "\n=======");
-		System.out.println("Tid Händelse  Kund  ?  led    ledT    I     $    :-(   köat    köT   köar  [Kassakö..]");
 
-		
+		System.out.println("PARAMETRAR" + "\n======="); // Parametrar
+		System.out.println("Antal kassor, N..........: " + N); // Antal kassor
+		System.out.println("Max som ryms, M..........: " + M); // Max personer i butik
+		System.out.println("Ankomsthastighet, lamba..: " + L); // Ankomsthastighet
+		System.out.println("Plocktider, [P_min..Pmax]: " + Pmin +", "+ Pmax); // Plocktid
+		System.out.println("Betaltider, [K_min..Kmax]: " + Bmin + ", "+Bmax); // Betaltid
+		System.out.println("Frï¿½, f...................: " + F); // Frï¿½
+
+		System.out.println("Fï¿½RLOPP" + "\n=======");
+		System.out.println("Tid Hï¿½ndelse  Kund  ?  led    ledT    I     $    :-(   kï¿½at    kï¿½T   kï¿½ar  [Kassakï¿½..]");
+
 	}
-	
-	/** Printar alla händelser INNAN de exekveras */
+
+	/** Printar alla hï¿½ndelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
 		/**
-		 * BEHÖVER HÄMTA IN vid CURRENT TIME
-		 * Händelse === arg0???
+		 * BEHï¿½VER Hï¿½MTA IN vid CURRENT TIME
+		 * Hï¿½ndelse === arg0???
 		 * Kund-ID
-		 * Om kassa är öppen/stängd
+		 * Om kassa ï¿½r ï¿½ppen/stï¿½ngd
 		 * Antal lediga kassor vid current time
-		 * Totalt hur länge kassorna varit lediga vid current time
+		 * Totalt hur lï¿½nge kassorna varit lediga vid current time
 		 * Antalet kunder i butiken
 		 * Antalet kunder som betalat
-		 * Antalet kunder som inte kunnat gått in pga fullt
-		 * Antalet kunder som tvingats köa
-		 * Summa tid som kunder tvingats köa
-		 * Hela kassakön
+		 * Antalet kunder som inte kunnat gï¿½tt in pga fullt
+		 * Antalet kunder som tvingats kï¿½a
+		 * Summa tid som kunder tvingats kï¿½a
+		 * Hela kassakï¿½n
 		 * 
 		 */
 		
@@ -71,34 +71,34 @@ public class SmallStoreView extends View {
 		
 		
 		
-		System.out.println(currentTime + "    " + arg0  + KUND-ID + Öppen/sträng + antal lediga kassor
-				+total tid båda varit lediga+ antal i butiken + antal som betalat + antal ej kommit in pga fullt
-				+ antal som tvingats köa + summa tid i kö + hela kassakön);
+		System.out.println(state.currentTime + "    " + arg0  + KUND-ID + ï¿½ppen/strï¿½ng + antal lediga kassor
+				+total tid bï¿½da varit lediga+ antal i butiken + antal som betalat + antal ej kommit in pga fullt
+				+ antal som tvingats kï¿½a + summa tid i kï¿½ + hela kassakï¿½n);
 		
 		
 	}
-	
+
 	/** Printar slutresultatet */
 	public void resultat() {
 		
 		/**
-		 * BEÖVER HÄMTA IN:
+		 * BEï¿½VER Hï¿½MTA IN:
 		 * 
 		 * Totalt antal kunder
 		 * Antal missade kunder
 		 * Totalt tid kassorna som kassorna varit lediga
 		 * Genomsnittlig ledig kassatid
-		 * %-sats för genomsnittlig ledig kassatid
-		 * Antalet kunder som behövs köa
-		 * Totala tiden som kunder köat
-		 * Genomsnittlig kö-tid
+		 * %-sats fï¿½r genomsnittlig ledig kassatid
+		 * Antalet kunder som behï¿½vs kï¿½a
+		 * Totala tiden som kunder kï¿½at
+		 * Genomsnittlig kï¿½-tid
 		 */
 		System.out.println("RESULTAT ========");
 		System.out.println("1) Av " + TOTALT ANTAL KUNDER + "kunder handlade" + "medan " + ANTAL MISSADE + "missades");
 		System.out.println("2) Total tid " + N + "varit lediga: " + TOTAL TID +" te");
-		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden från öppning till sista kunden betalat");
-		System.out.println("3) Total tid" + KUNDER SOM KÖA + "tvingats köa: " + TOTAL KÖTID + "te");
-		System.out.println("Genomsnittlig kötid: " + GENOMSNITTLIGKÖ-tid + "te");
+		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frï¿½n ï¿½ppning till sista kunden betalat");
+		System.out.println("3) Total tid" + KUNDER SOM Kï¿½A + "tvingats kï¿½a: " + TOTAL Kï¿½TID + "te");
+		System.out.println("Genomsnittlig kï¿½tid: " + GENOMSNITTLIGKï¿½-tid + "te");
 
 	}
 

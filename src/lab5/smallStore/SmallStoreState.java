@@ -9,7 +9,6 @@ import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
 public class SmallStoreState extends State {
-	String message;
 	double currentTime = 0;
 	int freeRegisters;
 	double totTimeInReg = 0;
@@ -24,8 +23,10 @@ public class SmallStoreState extends State {
 	public final int maxCustomers = 20;
 	public final int maxRegisters = 4;
 	public final double closingTime = 15;
-	public final double uniformLower = 10;
-	public final double uniformUpper = 20;
+	public final double uniformLowerShop = 10;
+	public final double uniformUpperShop = 20;
+	public final double uniformLowerPay = 20;
+	public final double uniformUpperPay = 20;
 	public final double exponentLambda = 4;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
@@ -38,7 +39,7 @@ public class SmallStoreState extends State {
 	public SmallStoreState() {
 		freeRegisters = maxRegisters;
 		storeView = new SmallStoreView(this);
-		regQueue = new FIFO(state);
+		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);
 		eventQueue = new EventQueue();

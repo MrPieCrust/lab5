@@ -13,6 +13,7 @@ public class CustomerPays extends Event{
 		this.timeToEx = timeToEx;
 		this.customer = customer;
 		state.timeKeeper = timeKeeper;
+		name = "Paying at the register";
 		addToEventQueue();
 	}
 	
