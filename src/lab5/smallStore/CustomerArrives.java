@@ -2,22 +2,21 @@ package lab5.smallStore;
 
 import java.util.ArrayList;
 
+import lab5.sim.Event;
 import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
-public class CustomerArrives {
+public class CustomerArrives extends Event{
 	private CreateCustomer customerFactory;
 	ArrayList<Customer> allCustomers;
 	private final String name = "Arrives";
-	private TimeKeeper timeKeeper;
-	private double timeToEx;
 	private double timeNextEvent;
 	private SmallStoreState state;
 	
 	public CustomerArrives(SmallStoreState state) {
 		this.state = state;
 		this.customerFactory = state.customerFactory;
-		this.timeKeeper = state.timeKeeper;
+		timeKeeper = state.timeKeeper;
 		timeToEx = timeKeeper.calcNextCustomer();
 	}
 	

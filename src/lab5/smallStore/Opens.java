@@ -1,5 +1,7 @@
 package lab5.smallStore;
 
-public class Opens {
+import lab5.sim.Event;
 
+public class Opens extends Event{
+	
 }

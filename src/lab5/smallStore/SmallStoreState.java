@@ -20,6 +20,9 @@ public class SmallStoreState extends State {
 	public final int maxCustomers = 20;
 	public final int maxRegisters = 4;
 	public final double closingTime = 15;
+	public final double uniformLower = 10;
+	public final double uniformUpper = 20;
+	public final double exponentLambda = 4;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
 	SmallStoreView storeView;
@@ -28,11 +31,10 @@ public class SmallStoreState extends State {
 	
 	public SmallStoreState() {
 		freeRegisters = maxRegisters;
-		storeView = new SmallStoreView();
+		storeView = new SmallStoreView(this);
 		regQueue = new FIFO();
 		customerFactory = new CreateCustomer();
-		timeKeeper = new TimeKeeper();
-		storeView = new SmallStoreView(this);
+		timeKeeper = new TimeKeeper(this);
 		this.addObserver(storeView);
 		
 		
