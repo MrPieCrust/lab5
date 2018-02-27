@@ -22,11 +22,11 @@ public class SmallStoreState extends State {
 	double avTimeQueue = 0;
 	public final int maxCustomers = 20;
 	public final int maxRegisters = 4;
-	public final double closingTime = 15;
+	public final double closingTime = 500;
 	public final double uniformLowerShop = 10;
 	public final double uniformUpperShop = 20;
-	public final double uniformLowerPay = 20;
-	public final double uniformUpperPay = 20;
+	public final double uniformLowerPay = 5;
+	public final double uniformUpperPay = 10;
 	public final double exponentLambda = 4;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
