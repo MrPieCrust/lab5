@@ -38,7 +38,7 @@ public class SmallStoreState extends State {
 	public SmallStoreState() {
 		freeRegisters = maxRegisters;
 		storeView = new SmallStoreView(this);
-		regQueue = new FIFO();
+		regQueue = new FIFO(state);
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);
 		eventQueue = new EventQueue();

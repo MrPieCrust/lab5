@@ -9,8 +9,11 @@ import lab5.smallStore.customer.Customer;
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
 	private ArrayList<Event> regStatus = new ArrayList<Event>();
-	
+	private SmallStoreState state;
 
+	public FIFO(SmallStoreState state) {
+		this.state = state;
+	}
 	public void add(Customer item) {
 		regQueue.add(item);
 	}
