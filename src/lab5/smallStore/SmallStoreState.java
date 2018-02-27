@@ -9,11 +9,11 @@ import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
 public class SmallStoreState extends State {
-	double currentTime = 0;
 	int freeRegisters;
 	double totTimeInReg = 0;
 	double totTimeInQueue = 0;
 	int numberOfCustomers = 0;
+	int numberOfCustomersNow = 0;
 	int payedCustomers = 0;
 	int missedCustomers = 0;
 	int numInQueue = 0;
@@ -44,6 +44,7 @@ public class SmallStoreState extends State {
 		timeKeeper = new TimeKeeper(this);
 		eventQueue = new EventQueue();
 		this.addObserver(storeView);
+		new Opens(this);
 		
 		
 	}
