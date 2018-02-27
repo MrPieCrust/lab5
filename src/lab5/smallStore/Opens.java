@@ -9,5 +9,6 @@ public class Opens extends Event{
 		this.timeKeeper = state.timeKeeper;
 		timeToEx = 0;
 		new CustomerArrives(state).preformEvent();
+		addToEventQueue();
 	}
 }

@@ -1,5 +1,6 @@
 package lab5.smallStore;
 
+import java.awt.Event;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -7,6 +8,8 @@ import lab5.smallStore.customer.Customer;
 
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
+	private ArrayList<Event> regStatus = new ArrayList<Event>();
+	
 
 	public void add(Customer item) {
 		regQueue.add(item);
@@ -51,6 +54,9 @@ public class FIFO{
 			finalString += "(" + String.valueOf(regQueue.get(i)) + ") ";
 		}
 		return finalString;
+	}
+	public void regStat() {
+		
 	}
 
 }
