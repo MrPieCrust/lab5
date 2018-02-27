@@ -1,8 +1,12 @@
 package lab5.smallStore;
 
 
+import java.util.ArrayList;
+
+import lab5.sim.EventQueue;
 import lab5.sim.State;
 import lab5.smallStore.customer.CreateCustomer;
+import lab5.smallStore.customer.Customer;
 
 public class SmallStoreState extends State {
 	String message;
@@ -27,6 +31,8 @@ public class SmallStoreState extends State {
 	FIFO regQueue;
 	SmallStoreView storeView;
 	TimeKeeper timeKeeper;
+	public EventQueue eventQueue;
+	ArrayList<Customer> allCustomer;
 	
 	
 	public SmallStoreState() {
@@ -35,6 +41,7 @@ public class SmallStoreState extends State {
 		regQueue = new FIFO();
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);
+		eventQueue = new EventQueue();
 		this.addObserver(storeView);
 		
 		

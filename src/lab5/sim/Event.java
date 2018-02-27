@@ -9,17 +9,15 @@ public class Event {
 	protected double timeToEx;
 	protected TimeKeeper timeKeeper;
 	
-	public void addElapsedTime(double currentTime){
-		State.timeElapsed+=currentTime;
-	}
-	
 	public String getName() {
 		return name;
 	}
 	public double getExTime() {
 		return timeToEx;
 	}
-	
+	protected void addToEventQueue() {
+		state.eventQueue.eventQueue.add(this);
+	}
 	protected void performEvent() {
 		
 	}
