@@ -23,11 +23,10 @@ public class CustomerArrives extends Event{
 	void preformEvent() {
 		state.eventHappened();
 
-		if (state.currentTime >= state.closingTime) {	
+		if (state.timeElapsed >= state.closingTime) {	
 		}
 		else if(!state.isFull()) {
 			createCustomer();
-			
 		}
 		else {
 			state.missedCustomers++;
@@ -38,6 +37,8 @@ public class CustomerArrives extends Event{
 		allCustomers.add(customerFactory.newCustomer());
 		timeNextEvent = timeKeeper.calcShop();
 		int custID = allCustomers.size() - 1;
+		state.numberOfCustomersNow++;
+		state.numberOfCustomers++;
 		new ShopGoods(state, timeNextEvent, allCustomers.get(custID));
 		
 	}

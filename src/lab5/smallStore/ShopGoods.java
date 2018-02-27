@@ -3,7 +3,6 @@ import lab5.sim.Event;
 import lab5.smallStore.customer.Customer;
 
 public class ShopGoods extends Event{
-	private double timeToEx;
 	private double timeNextEvent;
 	private SmallStoreState state;
 	private TimeKeeper timeKeeper;
@@ -14,18 +13,23 @@ public class ShopGoods extends Event{
 		this.state = state;
 		this.customer = customer;
 		state.timeKeeper = timeKeeper;
-		name = "Customer" + customer.getCustomerID() + "goes to collect goods";
 		addToEventQueue();
 		
 	}
 	
-	public double getExTime() {
-		return timeToEx;
-	}
 	void preformEvent() {
-		state.eventHappened();
-		timeNextEvent = state.timeElapsed + timeKeeper.calcPay();
-		new CustomerPays(state, timeNextEvent, customer);
+		if(state.regQueue.isEmpty()) {
+			name = "Customer goes to pay";
+			state.eventHappened();
+			timeNextEvent = state.timeElapsed + timeKeeper.calcPay();
+			new CustomerPays(state, timeNextEvent, customer);
+		}
+		else {
+			name = "No free registers, moves to queue";
+			state.eventHappened();
+			state.regQueue.add(customer);
+		
+		}
 	}
 	
 }

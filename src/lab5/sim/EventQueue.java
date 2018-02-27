@@ -10,8 +10,9 @@ public class EventQueue {
 		
 	}
 	/**
-	 * First creates a new temp with the exTimes then sorts them and puts them 
+	 * First creates a new temp ArrayList with the exTimes then sorts them and puts them 
 	 * back in the right order for the eventQueue
+	 * 
 	 * @return The sorted eventQueue
 	 */
 	private ArrayList<Event> sort() {
@@ -23,7 +24,7 @@ public class EventQueue {
 		}
 		Collections.sort(temp);
 		for(double exTime : temp) {
-			for(Event event :eventQueue) {
+			for(Event event : eventQueue) {
 				if(exTime==event.getExTime()) {
 					sortedQueue.add(event);
 				}
@@ -35,9 +36,9 @@ public class EventQueue {
 		eventQueue = sort();
 		return eventQueue.get(0);
 	}
-	void sortList() {
-		for (int i=0;i<eventQueue.size();i++) {
-			
-		}
-	}
+//	void sortList() {
+//		for (int i=0;i<eventQueue.size();i++) {
+//			
+//		}
+//	}
 }
