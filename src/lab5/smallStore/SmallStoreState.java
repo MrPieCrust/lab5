@@ -24,11 +24,13 @@ public class SmallStoreState extends State {
 	FIFO regQueue;
 	SmallStoreView storeView;
 	
+	
 	public SmallStoreState() {
 		freeRegisters = maxRegisters;
 		storeView = new SmallStoreView();
 		regQueue = new FIFO();
 		customerFactory = new CreateCustomer();
+		storeView = new SmallStoreView(this);
 		this.addObserver(storeView);
 		
 		
