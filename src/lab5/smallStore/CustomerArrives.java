@@ -38,7 +38,7 @@ public class CustomerArrives {
 	private void createCustomer() {
 		allCustomers.add(customerFactory.newCustomer());
 		timeNextEvent = timeKeeper.calcShop();
-		new ShopGoods(timeNextEvent);
+		new ShopGoods(state, timeNextEvent);
 		
 	}
 	public double getExTime() {
