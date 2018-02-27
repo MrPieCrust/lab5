@@ -1,11 +1,28 @@
 package lab5.smallStore;
 
-public abstract class TimeKeeper {
+import lab5.random.ExponentialRandomStream;
+import lab5.random.UniformRandomStream;
+import lab5.sim.State;
 
-	public abstract double calcNextCustomer();
+public class TimeKeeper {
+	private ExponentialRandomStream expRandom;
+	private UniformRandomStream uniRandom;
+	private SmallStoreState state;
 	
-	public abstract double calcPay();
+	public TimeKeeper(SmallStoreState state) {
+		this.state = state;
+		expRandom = new ExponentialRandomStream(state.exponentLambda, state.fseed);
+		uniRandom = new UniformRandomStream(state.uniformLower, state.uniformUpper, state.fseed);
+	}
+	public double calcNextCustomer() {
+		return expRandom.next();
+	}
 	
-	public abstract double calcShop();
+	public double calcPay() {
+		return uniRandom.next();
+	}
+	double calcShop() {
+		return uniRandom.next();
+	}
 	
 }

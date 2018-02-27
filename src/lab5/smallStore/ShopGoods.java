@@ -1,6 +1,7 @@
 package lab5.smallStore;
+import lab5.sim.Event;
 
-public class ShopGoods {
+public class ShopGoods extends Event{
 	private double timeToEx;
 	private double timeNextEvent;
 	private SmallStoreState state;

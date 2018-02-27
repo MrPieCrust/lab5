@@ -1,6 +1,7 @@
 package lab5.smallStore;
+import lab5.sim.Event;
 
-public class CustomerPays {
+public class CustomerPays extends Event{
 	private SmallStoreState state;
 	private double timeToEx;
 	private TimeKeeper timeKeeper;
