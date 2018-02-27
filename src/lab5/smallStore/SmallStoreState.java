@@ -25,12 +25,14 @@ public class SmallStoreState extends State {
 	SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	
+	
 	public SmallStoreState() {
 		freeRegisters = maxRegisters;
 		storeView = new SmallStoreView();
 		regQueue = new FIFO();
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper();
+		storeView = new SmallStoreView(this);
 		this.addObserver(storeView);
 		
 		
