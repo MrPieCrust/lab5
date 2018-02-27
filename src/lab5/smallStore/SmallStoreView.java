@@ -17,23 +17,14 @@ public class SmallStoreView extends View {
 		this.regQueue = state.regQueue;
 		
 	}
-	//	PARAMETRAR
-//	==========
-//	Antal kassor, N..........: 2
-//	Max som ryms, M..........: 5
-//	Ankomshastighet, lambda..: 1.0
-//	Plocktider, [P_min..Pmax]: [0.5..1.0]
-//	Betaltider, [K_min..Kmax]: [2.0..3.0]
-//	FrÃ¶, f...................: 1234
 	
+	/** Printar alla parametrar från början */
 	
 	public void printParameters() {
 		
 		int N = state.maxRegisters;
 		int M = state.maxCustomers;
-		double currentTime = state.currentTime;
-		/** Det som behövs:
-		 * 
+		/** Det som behövs: 
 		 * Ankomsthastighet lambda
 		 * Plocktider
 		 * Betaltider
@@ -56,23 +47,59 @@ public class SmallStoreView extends View {
 		
 	}
 	
+	/** Printar alla händelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
-		super.update(arg0, arg1);
+		/**
+		 * BEHÖVER HÄMTA IN vid CURRENT TIME
+		 * Händelse === arg0???
+		 * Kund-ID
+		 * Om kassa är öppen/stängd
+		 * Antal lediga kassor vid current time
+		 * Totalt hur länge kassorna varit lediga vid current time
+		 * Antalet kunder i butiken
+		 * Antalet kunder som betalat
+		 * Antalet kunder som inte kunnat gått in pga fullt
+		 * Antalet kunder som tvingats köa
+		 * Summa tid som kunder tvingats köa
+		 * Hela kassakön
+		 * 
+		 */
 		
+		
+		super.update(arg0, arg1);
 		double currentTime = state.currentTime;
 		
-		System.out.println(currentTime + "    " + arg0);
-		System.out.println(arg0);
-		
-	}
-	public static void main(String[] args) {
-		System.out.println("FÖRLOPP" +  "\n=======");
-		System.out.println("Tid Händelse  Kund  ?  led    ledT    I     $    :-(   köat    köT   köar  [Kassakö..]");
-		System.out.println("0,00 Open");
 		
 		
-		
+		System.out.println(currentTime + "    " + arg0  + KUND-ID + Öppen/sträng + antal lediga kassor
+				+total tid båda varit lediga+ antal i butiken + antal som betalat + antal ej kommit in pga fullt
+				+ antal som tvingats köa + summa tid i kö + hela kassakön);
 		
 		
 	}
+	
+	/** Printar slutresultatet */
+	public void resultat() {
+		
+		/**
+		 * BEÖVER HÄMTA IN:
+		 * 
+		 * Totalt antal kunder
+		 * Antal missade kunder
+		 * Totalt tid kassorna som kassorna varit lediga
+		 * Genomsnittlig ledig kassatid
+		 * %-sats för genomsnittlig ledig kassatid
+		 * Antalet kunder som behövs köa
+		 * Totala tiden som kunder köat
+		 * Genomsnittlig kö-tid
+		 */
+		System.out.println("RESULTAT ========");
+		System.out.println("1) Av " + TOTALT ANTAL KUNDER + "kunder handlade" + "medan " + ANTAL MISSADE + "missades");
+		System.out.println("2) Total tid " + N + "varit lediga: " + TOTAL TID +" te");
+		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden från öppning till sista kunden betalat");
+		System.out.println("3) Total tid" + KUNDER SOM KÖA + "tvingats köa: " + TOTAL KÖTID + "te");
+		System.out.println("Genomsnittlig kötid: " + GENOMSNITTLIGKÖ-tid + "te");
+
+	}
+
 }
