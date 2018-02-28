@@ -16,7 +16,8 @@ public class ExponentialRandomStream {
 	    this.lambda = lambda;
 	}
 	  
-	public static double next() {
+	public double next() {
+		
 	  	return -Math.log(rand.nextDouble())/lambda;
 	}
 	

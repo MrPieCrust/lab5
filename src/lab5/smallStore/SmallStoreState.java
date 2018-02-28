@@ -32,17 +32,19 @@ public class SmallStoreState extends State {
 	SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	public EventQueue eventQueue;
-	ArrayList<Customer> allCustomer = new ArrayList<Customer>();
+	ArrayList<Customer> allCustomer;
 	
 	
 	public SmallStoreState() {
-		timeKeeper = new TimeKeeper(this);
 		storeView = new SmallStoreView(this);
 		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
+		timeKeeper = new TimeKeeper(this);
 		eventQueue = new EventQueue(this);
 		this.addObserver(storeView);
 		new Opens(this);
+		
+		
 	}
 	boolean isFull() {
 		if(numberOfCustomers==maxCustomers) {
@@ -52,16 +54,9 @@ public class SmallStoreState extends State {
 			return false;
 		}
 	}
-	void eventHappened(Customer customer) {
-		setChanged();
-		notifyObservers(customer);
-		}
 	void eventHappened() {
 		setChanged();
 		notifyObservers();
 		}
 
-	public void newCustomer() {
-		new CustomerArrives(this);
-	}
 }
