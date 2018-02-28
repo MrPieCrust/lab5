@@ -4,27 +4,45 @@ import java.awt.Event;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+import javax.naming.TimeLimitExceededException;
+
 import lab5.smallStore.customer.Customer;
 
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
-	private ArrayList<Integer> nrOfReg = new ArrayList<Integer>();
+//	private ArrayList<Register> registers = new ArrayList<Register>();
 	private SmallStoreState state;
-	private boolean isEmpty1 = true;
-	private boolean isEmpty2 = true;
-	private boolean isEmpty3 = true;
-	private boolean isEmpty4 = true;
+	int freeRegisters; 
+	int openRegisters;
+
 
 	public FIFO(SmallStoreState state) {
 		this.state = state;
+		openRegisters = 1;
+		freeRegisters = 1;
+		
 	}
 	public void add(Customer item) {
 		regQueue.add(item);
+		item.timeQueued = state.timeElapsed;
+		state.numInQueue++;
+		state.lengthOfQueue++;
+		if (regQueue.size() > 2 && openRegisters<state.maxRegisters) {
+			openRegisters++;
+		}
 	}
 
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
+			double tempPay = state.timeKeeper.calcPay();
+			state.totTimeInReg += tempPay;
+			new CustomerPays(state, state.timeElapsed + tempPay, regQueue.get(0));
+			regQueue.get(0).timeQueued = state.timeElapsed - regQueue.get(0).timeQueued;
+			state.totTimeInQueue += regQueue.get(0).timeQueued;
 			regQueue.remove(0);
+			state.lengthOfQueue--;
+			freeRegisters--;
+
 		} else {
 			throw new NoSuchElementException();
 		}
@@ -51,40 +69,37 @@ public class FIFO{
 		return regQueue.size();
 	}
 
-	private Customer getIndex(int i) {
-		return regQueue.get(i);
-	}
-
-	public String toString() {
-		String finalString = "Queue: ";
-		for (int i = 0; i < regQueue.size(); i++) {
-			finalString += "(" + String.valueOf(regQueue.get(i)) + ") ";
-		}
-		return finalString;
-	}
-	
-	
 	public void regStat() {
-		if(nrOfReg.size() <= state.maxRegisters) {
-		//int counter = 0;
-			if(regQueue.size() >= 0) {
-					if(isEmpty1 == true) {
-						removeFirst(); //tar bort först ur kön
-						isEmpty1 = false;
-					} else if(isEmpty2 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					} else if(isEmpty3 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					} else if(isEmpty2 == true) {
-						removeFirst(); 
-						isEmpty1 = false;
-					}
-					
-				}
-
-			}
-		}
+		
+	}
 
 }
+//class Register{
+//	private boolean open = false;
+//	private boolean free = false;
+//	
+//	void changeOpen() {
+//		if(open) {
+//			open=false;
+//		}
+//		else {
+//			open=true;
+//		}
+//	}
+//
+//	void changeFree() {
+//		if(free) {
+//			free = false;
+//		}
+//		else {
+//			free = true;
+//		}
+//	}
+//	public boolean isOpen() {
+//		return open;
+//	}
+//	public boolean isFree() {
+//		return free;
+//	}
+
+	

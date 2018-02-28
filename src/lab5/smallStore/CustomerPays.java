@@ -3,31 +3,28 @@ import lab5.sim.Event;
 import lab5.smallStore.customer.Customer;
 
 public class CustomerPays extends Event{
-	private SmallStoreState state;
-	private double timeToEx;
-	private TimeKeeper timeKeeper;
 	private Customer customer;
 	
 	public CustomerPays(SmallStoreState state, double timeToEx, Customer customer) {
 		this.state = state;
 		this.timeToEx = timeToEx;
-		this.customer = customer;
-		state.timeKeeper = timeKeeper;
-		name = "Paying at the register";
-		addToEventQueue();
+		name = "Payed at the register";
+		addToEventQueue(this);
 	}
 	
-	public double getExTime() {
-		return timeToEx;
-	}
-	
-	void preformEvent() {
-		state.eventHappened();
-		if(state.regQueue.isEmpty()) {
-			
+	protected void performEvent() {
+		state.eventHappened(customer);
+		state.numberOfCustomersNow--;
+		state.payedCustomers++;
+		state.regQueue.freeRegisters++;
+		if(state.regQueue.size()>0) {
+			state.regQueue.removeFirst();			
+		}
+		else if (state.regQueue.freeRegisters>1){
+			state.regQueue.openRegisters--;
 		}
 		else {
-			state.regQueue.add(customer);
+			
 		}
 	}
 }

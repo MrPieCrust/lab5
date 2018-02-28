@@ -8,5 +8,9 @@ public class Closes extends Event{
 		this.state = state;
 		timeToEx = state.closingTime;
 		name = "The Store closes";
+		addToEventQueue(this);
+	}
+	protected void performEvent() {
+		state.stopFlag = true;
 	}
 }

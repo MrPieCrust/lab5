@@ -9,43 +9,40 @@ import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
 public class SmallStoreState extends State {
-	double currentTime = 0;
-	int freeRegisters;
 	double totTimeInReg = 0;
 	double totTimeInQueue = 0;
 	int numberOfCustomers = 0;
+	int numberOfCustomersNow = 0;
 	int payedCustomers = 0;
 	int missedCustomers = 0;
 	int numInQueue = 0;
 	int lengthOfQueue = 0;
 	double avTimeReg = 0;
 	double avTimeQueue = 0;
-	public final int maxCustomers = 20;
-	public final int maxRegisters = 4;
-	public final double closingTime = 500;
-	public final double uniformLowerShop = 10;
-	public final double uniformUpperShop = 20;
-	public final double uniformLowerPay = 5;
-	public final double uniformUpperPay = 10;
-	public final double exponentLambda = 4;
+	public final int maxCustomers = 5;
+	public final int maxRegisters = 2;
+	public final double closingTime = 10;
+	public final double uniformLowerShop = 0.5;
+	public final double uniformUpperShop = 1.0;
+	public final double uniformLowerPay = 2.0;
+	public final double uniformUpperPay = 3.0;
+	public final double exponentLambda = 1;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
 	SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	public EventQueue eventQueue;
-	ArrayList<Customer> allCustomer;
+	ArrayList<Customer> allCustomer = new ArrayList<Customer>();
 	
 	
 	public SmallStoreState() {
-		freeRegisters = maxRegisters;
+		timeKeeper = new TimeKeeper(this);
 		storeView = new SmallStoreView(this);
 		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
-		timeKeeper = new TimeKeeper(this);
-		eventQueue = new EventQueue();
+		eventQueue = new EventQueue(this);
 		this.addObserver(storeView);
-		
-		
+		new Opens(this);
 	}
 	boolean isFull() {
 		if(numberOfCustomers==maxCustomers) {
@@ -55,12 +52,16 @@ public class SmallStoreState extends State {
 			return false;
 		}
 	}
+	void eventHappened(Customer customer) {
+		setChanged();
+		notifyObservers(customer);
+		}
 	void eventHappened() {
-		updateAll();
-	}
-	private void updateAll() {
 		setChanged();
 		notifyObservers();
-	}
+		}
 
+	public void newCustomer() {
+		new CustomerArrives(this);
+	}
 }
