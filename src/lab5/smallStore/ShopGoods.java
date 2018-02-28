@@ -26,7 +26,6 @@ public class ShopGoods extends Event{
 			state.totTimeInReg += tempPay;
 			timeNextEvent = state.timeElapsed + tempPay;
 			new CustomerPays(state, timeNextEvent, customer);
-			state.regQueue.freeRegisters--;
 		}
 		else {
 			name = "No free registers, moves to queue";
