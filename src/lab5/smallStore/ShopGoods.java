@@ -21,7 +21,9 @@ public class ShopGoods extends Event{
 		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
 			name = "Customer goes to pay";
 			state.eventHappened();
-			timeNextEvent = state.timeElapsed + timeKeeper.calcPay();
+			double tempPay = timeKeeper.calcPay();
+			state.totTimeInReg += tempPay;
+			timeNextEvent = state.timeElapsed + tempPay;
 			new CustomerPays(state, timeNextEvent, customer);
 		}
 		else {

@@ -4,6 +4,7 @@ public class Customer {
 	private int ID;
 	public double timeQueued;
 	
+	
 	Customer(int ID){
 		this.ID = ID;
 	}

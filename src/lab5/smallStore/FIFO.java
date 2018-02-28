@@ -25,15 +25,22 @@ public class FIFO{
 	public void add(Customer item) {
 		regQueue.add(item);
 		item.timeQueued = state.timeElapsed;
-		//if regQueue==size && openRegisters<state.maxRegisters
-		//openRegisters++
+		state.numInQueue++;
+		state.lengthOfQueue++;
+		if (regQueue.size() > 2 && openRegisters<state.maxRegisters) {
+			openRegisters++;
+		}
 	}
 
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
-			new CustomerPays(state, state.timeElapsed + state.timeKeeper.calcPay(), regQueue.get(0));
+			double tempPay = state.timeKeeper.calcPay();
+			state.totTimeInReg += tempPay;
+			new CustomerPays(state, state.timeElapsed + tempPay, regQueue.get(0));
 			regQueue.get(0).timeQueued = state.timeElapsed - regQueue.get(0).timeQueued;
+			state.totTimeInQueue += regQueue.get(0).timeQueued;
 			regQueue.remove(0);
+			state.lengthOfQueue--;
 			freeRegisters--;
 
 		} else {

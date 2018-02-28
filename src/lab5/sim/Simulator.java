@@ -8,7 +8,7 @@ public class Simulator {
 	
 	public Simulator() {
 		this.state= new SmallStoreState();
-		this.eventQueue =new EventQueue(state);
+		this.eventQueue = state.eventQueue;
 	}
 	public void run() {
 		while (state.stopFlag==false) {
