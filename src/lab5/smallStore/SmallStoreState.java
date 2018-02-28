@@ -42,7 +42,7 @@ public class SmallStoreState extends State {
 		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);
-		eventQueue = new EventQueue();
+		eventQueue = new EventQueue(this);
 		this.addObserver(storeView);
 		new Opens(this);
 		
@@ -57,11 +57,8 @@ public class SmallStoreState extends State {
 		}
 	}
 	void eventHappened() {
-		updateAll();
-	}
-	private void updateAll() {
 		setChanged();
 		notifyObservers();
-	}
+		}
 
 }

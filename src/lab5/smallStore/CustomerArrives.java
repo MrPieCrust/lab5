@@ -18,6 +18,14 @@ public class CustomerArrives extends Event{
 		name = "Arrives";
 		addToEventQueue();
 	}
+	public CustomerArrives(SmallStoreState state, String first) {
+		this.state = state;
+		this.customerFactory = state.customerFactory;
+		timeKeeper = state.timeKeeper;
+		timeToEx = 0;
+		name = "Arrives";
+		addToEventQueue();
+	}
 	
 	void preformEvent() {
 		state.eventHappened();
@@ -26,19 +34,21 @@ public class CustomerArrives extends Event{
 		}
 		else if(!state.isFull()) {
 			createCustomer();
+			new CustomerArrives(state);
 		}
 		else {
 			state.missedCustomers++;
+			new CustomerArrives(state);
 		}
 	}
 	
 	private void createCustomer() {
-		allCustomers.add(customerFactory.newCustomer());
-		timeNextEvent = timeKeeper.calcShop();
-		int custID = allCustomers.size() - 1;
+		state.allCustomer.add(customerFactory.newCustomer());
+		timeNextEvent = state.timeElapsed + timeKeeper.calcShop();
+		int custID = state.allCustomer.size() - 1;
 		state.numberOfCustomersNow++;
 		state.numberOfCustomers++;
-		new ShopGoods(state, timeNextEvent, allCustomers.get(custID));
+		new ShopGoods(state, timeNextEvent, state.allCustomer.get(custID));
 		
 	}
 }

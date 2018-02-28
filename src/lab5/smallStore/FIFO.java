@@ -4,6 +4,8 @@ import java.awt.Event;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+import javax.naming.TimeLimitExceededException;
+
 import lab5.smallStore.customer.Customer;
 
 public class FIFO{
@@ -22,13 +24,15 @@ public class FIFO{
 	}
 	public void add(Customer item) {
 		regQueue.add(item);
-		//if regQueue==size && openRegisters=<state.maxRegisters
+		item.timeQueued = state.timeElapsed;
+		//if regQueue==size && openRegisters<state.maxRegisters
 		//openRegisters++
 	}
 
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
 			new CustomerPays(state, state.timeElapsed + state.timeKeeper.calcPay(), regQueue.get(0));
+			regQueue.get(0).timeQueued = state.timeElapsed - regQueue.get(0).timeQueued;
 			regQueue.remove(0);
 			freeRegisters--;
 
