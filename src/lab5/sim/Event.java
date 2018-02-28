@@ -20,5 +20,8 @@ public class Event {
 	protected void performEvent() {
 		
 	}
+	public int getCustID() {
+		return 0;
+	}
 	
 }

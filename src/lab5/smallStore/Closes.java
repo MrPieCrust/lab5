@@ -7,10 +7,12 @@ public class Closes extends Event{
 	public Closes(SmallStoreState state) {
 		this.state = state;
 		timeToEx = state.closingTime;
-		name = "The Store closes";
+		name = "Closes";
 		addToEventQueue(this);
 	}
 	protected void performEvent() {
+		state.eventHappened(this);
+		state.status = "S";
 		state.stopFlag = true;
 	}
 }
