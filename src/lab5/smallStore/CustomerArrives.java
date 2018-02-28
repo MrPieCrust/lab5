@@ -9,6 +9,7 @@ import lab5.smallStore.customer.Customer;
 public class CustomerArrives extends Event {
 	private CreateCustomer customerFactory;
 	private double timeNextEvent;
+	private int custID;
 
 	public CustomerArrives(SmallStoreState state) {
 		this.state = state;
@@ -28,7 +29,7 @@ public class CustomerArrives extends Event {
 
 	protected void performEvent() {
 		if (state.allCustomer.size() > 0) {
-			state.eventHappened(state.allCustomer.get(state.allCustomer.size() - 1));
+			state.eventHappened(this);
 		}
 		if (state.timeElapsed >= state.closingTime) {
 			System.out.println("print");
@@ -46,9 +47,13 @@ public class CustomerArrives extends Event {
 		state.allCustomer.add(customerFactory.newCustomer());
 		timeNextEvent = state.timeElapsed + state.timeKeeper.calcShop();
 		int custID = state.allCustomer.size() - 1;
+		this.custID = custID;
 		state.numberOfCustomersNow++;
 		state.numberOfCustomers++;
 		new ShopGoods(state, timeNextEvent, state.allCustomer.get(custID));
 
+	}
+	public int getCustID() {
+		return custID;
 	}
 }

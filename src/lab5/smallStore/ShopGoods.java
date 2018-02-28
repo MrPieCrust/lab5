@@ -6,20 +6,22 @@ public class ShopGoods extends Event{
 	private double timeNextEvent;
 	private SmallStoreState state;
 	private Customer customer; 
+	private int custID;
 	
 	public ShopGoods(SmallStoreState state, double timeToEx, Customer customer) {
 		this.timeToEx = timeToEx;
 		this.state = state;
 		this.customer = customer;
 		state.eventQueue.queue.add(this);
+		custID = customer.getCustomerID();
 //		addToEventQueue(this);
 		
 	}
 	
 	protected void performEvent() {
 		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
-			name = "Customer goes to pay";
-			state.eventHappened(customer);
+			name = "Goods";
+			state.eventHappened(this);
 			double tempPay = state.timeKeeper.calcPay();
 			state.totTimeInReg += tempPay;
 			timeNextEvent = state.timeElapsed + tempPay;
@@ -32,8 +34,8 @@ public class ShopGoods extends Event{
 		
 		}
 	}
-	int getCustomerID() {
-		return customer.getCustomerID();
+
+	public int getCustID() {
+		return custID;
 	}
-	
 }

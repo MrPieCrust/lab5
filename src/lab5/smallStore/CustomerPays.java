@@ -4,16 +4,18 @@ import lab5.smallStore.customer.Customer;
 
 public class CustomerPays extends Event{
 	private Customer customer;
+	private int custID;
 	
 	public CustomerPays(SmallStoreState state, double timeToEx, Customer customer) {
 		this.state = state;
 		this.timeToEx = timeToEx;
-		name = "Payed at the register";
+		name = "Payed";
 		addToEventQueue(this);
+		custID = customer.getCustomerID();
 	}
 	
 	protected void performEvent() {
-		state.eventHappened(customer);
+		state.eventHappened(this);
 		state.numberOfCustomersNow--;
 		state.payedCustomers++;
 		state.regQueue.freeRegisters++;
@@ -26,5 +28,8 @@ public class CustomerPays extends Event{
 		else {
 			
 		}
+	}
+	public int getCustID() {
+		return custID;
 	}
 }

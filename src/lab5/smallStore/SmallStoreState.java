@@ -3,6 +3,7 @@ package lab5.smallStore;
 
 import java.util.ArrayList;
 
+import lab5.sim.Event;
 import lab5.sim.EventQueue;
 import lab5.sim.State;
 import lab5.smallStore.customer.CreateCustomer;
@@ -19,6 +20,7 @@ public class SmallStoreState extends State {
 	int lengthOfQueue = 0;
 	double avTimeReg = 0;
 	double avTimeQueue = 0;
+	String status;
 	public final int maxCustomers = 5;
 	public final int maxRegisters = 2;
 	public final double closingTime = 10;
@@ -52,9 +54,9 @@ public class SmallStoreState extends State {
 			return false;
 		}
 	}
-	void eventHappened(Customer customer) {
+	void eventHappened(Event event) {
 		setChanged();
-		notifyObservers(customer);
+		notifyObservers(event);
 		}
 	void eventHappened() {
 		setChanged();
