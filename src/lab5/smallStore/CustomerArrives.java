@@ -33,7 +33,6 @@ public class CustomerArrives extends Event {
 			state.eventHappened(this);
 		}
 		if (state.timeElapsed >= state.closingTime) {
-			System.out.println("print");
 		} else if (!state.isFull()) {
 			createCustomer();
 			new CustomerArrives(state);

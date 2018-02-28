@@ -49,9 +49,5 @@ public class EventQueue {
 			return new Closes(state);
 		}
 	}
-//	void sortList() {
-//		for (int i=0;i<eventQueue.size();i++) {
-//			
-//		}
-//	}
+
 }
