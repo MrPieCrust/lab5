@@ -41,6 +41,7 @@ public class SmallStoreView extends View {
 
 	}
 
+	
 	/** Printar alla händelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
 		/**
@@ -58,7 +59,7 @@ public class SmallStoreView extends View {
 //		state.allCustomer.get(Customer.getCustomerID()); //Kund-ID
 //		//Kassa öppen/stängd
 //		state.regQueue.freeRegisters;//Antal lediga kassor vid current time
-//		//Total ledig tid för kassor
+//		//TOTAL LEDIG TID FÖR KASSOR
 //		state.numberOfCustomersNow; //Kunder i butiken just nu
 //		state.payedCustomers; //Kunder som betalat
 //		state.missedCustomers; //Fullt i butiken
@@ -92,11 +93,10 @@ public class SmallStoreView extends View {
 		 * Genomsnittlig kö-tid
 		 */
 		System.out.println("RESULTAT ========");
-		System.out.println(N);
 		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
-		System.out.println("2) Total tid " + N + "varit lediga: " + TOTAL TID +" te");
+		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
 		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frïån öppning till sista kunden betalat");
-		System.out.println("3) Total tid" + KUNDER SOM KÖA + "tvingats köa: " + TOTAL KÖTID + "te");
+		System.out.println("3) Total tid" + state.numInQueue + "tvingats köa: " + state.totTimeInQueue + "te");
 		System.out.println("Genomsnittlig kötid: " + GENOMSNITTLIGKÖ-tid + "te");
 
 	}
