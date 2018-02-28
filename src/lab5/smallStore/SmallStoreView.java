@@ -2,9 +2,10 @@ package lab5.smallStore;
 
 import java.util.Observable;
 
-import lab5.sim.View;
+import lab5.sim.*;
 import lab5.smallStore.SmallStoreState;
 import lab5.random.*;
+import lab5.smallStore.customer.*;
 
 public class SmallStoreView extends View {
 
@@ -12,36 +13,29 @@ public class SmallStoreView extends View {
 	private FIFO regQueue;
 	private ExponentialRandomStream random;
 
+
+	
+
 	public SmallStoreView(SmallStoreState state) {
 		this.state = state;
 		this.regQueue = state.regQueue;
+			
 
 	}
 
 	/** Printar alla parametrar från början */
 
 	public void printParameters() {
-
-		int N = state.maxRegisters;
-		int M = state.maxCustomers;
-		double L = state.exponentLambda;
-		double Pmin = state.uniformLowerShop;
-		double Pmax = state.uniformLowerShop;
-		double Bmin = state.uniformLowerPay;
-		double Bmax = state.uniformUpperPay;
-		long F = state.fseed;
-		/**
-		 * Det som behövs: Ankomsthastighet lambda Plocktider Betaltider Frï¿½
-		 */
-
+		
+		
+		
 		System.out.println("PARAMETRAR" + "\n======="); // Parametrar
-		System.out.println("Antal kassor, N..........: " + N); // Antal kassor
-		System.out.println("Max som ryms, M..........: " + M); // Max personer i butik
-		System.out.println("Ankomsthastighet, lamba..: " + L); // Ankomsthastighet
-		System.out.println("Plocktider, [P_min..Pmax]: " + Pmin +", "+ Pmax); // Plocktid
-		System.out.println("Betaltider, [K_min..Kmax]: " + Bmin + ", "+Bmax); // Betaltid
-		System.out.println("Frï¿½, f...................: " + F); // Frï¿½
-
+		System.out.println("Antal kassor, N..........: " + state.maxRegisters); // Antal kassor
+		System.out.println("Max som ryms, M..........: " + state.maxRegisters); // Max personer i butik
+		System.out.println("Ankomsthastighet, lamba..: " + state.exponentLambda); // Ankomsthastighet
+		System.out.println("Plocktider, [P_min..Pmax]: " + state.uniformLowerShop +", "+ state.uniformUpperShop); // Plocktid
+		System.out.println("Betaltider, [K_min..Kmax]: " + state.uniformLowerPay + ", "+ state.uniformUpperPay); // Betaltid
+		System.out.println("Frö, f...................: " + state.fseed); // Frö
 		System.out.println("FÖRLOPP" + "\n=======");
 		System.out.println("Tid Händelse  Kund  ?  led    ledT    I     $    :-(   köat    köT   köar  [Kassakö..]");
 
@@ -50,31 +44,34 @@ public class SmallStoreView extends View {
 	/** Printar alla händelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
 		/**
-		 * BEHÖVER HÄMTA IN vid CURRENT TIME
-		 * Händelse === arg0???
-		 * Kund-ID
-		 * Om kassa är öppen/stängd
-		 * Antal lediga kassor vid current time
-		 * Totalt hur länge kassorna varit lediga vid current time
-		 * Antalet kunder i butiken
-		 * Antalet kunder som betalat
-		 * Antalet kunder som inte kunnat gått in pga fullt
-		 * Antalet kunder som tvingats köa
-		 * Summa tid som kunder tvingats köa
+		 *
+		 * 
 		 * Hela kassakön
 		 * 
 		 */
 		
 		
 		super.update(arg0, arg1);
-		double currentTime = state.timeElapsed;
 		
+//		state.timeElapsed; //Tid just nu
+//		arg0; //händelse
+//		state.allCustomer.get(Customer.getCustomerID()); //Kund-ID
+//		//Kassa öppen/stängd
+//		state.regQueue.freeRegisters;//Antal lediga kassor vid current time
+//		//Total ledig tid för kassor
+//		state.numberOfCustomersNow; //Kunder i butiken just nu
+//		state.payedCustomers; //Kunder som betalat
+//		state.missedCustomers; //Fullt i butiken
+//		state.numInQueue;//Antalet kunder som tvingats köa
+//		state.totTimeInQueue; //Total tid kunder köat
+//		state.regQueue.toString(); //Hela kassakö
+//		
+//		System.out.println(state.freeRegisters);
 		
-		
-		
-		System.out.println(currentTime + "    " + arg0  + getCustomerID() + öppen/stäng + antal lediga kassor
-				+ total tid båda varit lediga + antal i butiken + antal som betalat + antal ej kommit in pga fullt
-				+ antal som tvingats köa + summa tid i kö + hela kassakön);
+		System.out.println(state.timeElapsed + "    " + arg0  + state.allCustomer.get(Customer.getCustomerID()) 
+		+ state.regQueue.freeRegisters
+				+ state.numberOfCustomersNow + state.payedCustomers + state.missedCustomers
+				+ state.numInQueue + state.totTimeInQueue + state.regQueue.toString());
 		
 		
 	}
@@ -95,6 +92,7 @@ public class SmallStoreView extends View {
 		 * Genomsnittlig kö-tid
 		 */
 		System.out.println("RESULTAT ========");
+		System.out.println(N);
 		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
 		System.out.println("2) Total tid " + N + "varit lediga: " + TOTAL TID +" te");
 		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frïån öppning till sista kunden betalat");
