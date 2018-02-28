@@ -60,9 +60,9 @@ public class SmallStoreState extends State {
 		setChanged();
 		notifyObservers(event);
 		}
-	void eventHappened() {
-		setChanged();
-		notifyObservers();
-		}
+//	void eventHappened() {
+//		setChanged();
+//		notifyObservers();
+//		}
 
 }

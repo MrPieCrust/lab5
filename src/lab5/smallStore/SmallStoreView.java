@@ -83,6 +83,7 @@ public class SmallStoreView extends View {
 
 		}
 		else {
+			//System.out.println(arg1);
 			System.out.println(two.format(state.timeElapsed) + "	"+ ((Event) arg1).getName() + "	 " + ((Event) arg1).getCustID() + "	" + state.status + "	  " +
 					 state.regQueue.freeRegisters+ "	" + "ledT"+"	"
 							+ state.numberOfCustomersNow+ " 	 " + state.payedCustomers+ "	" + state.missedCustomers+ "	"

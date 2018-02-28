@@ -29,6 +29,7 @@ public class FIFO{
 		state.lengthOfQueue++;
 		if (regQueue.size() > 2 && openRegisters<state.maxRegisters) {
 			openRegisters++;
+			freeRegisters++;
 		}
 	}
 
@@ -71,6 +72,9 @@ public class FIFO{
 
 	public void regStat() {
 		
+	}
+	public void removeFromReg() {
+		freeRegisters--;
 	}
 
 }
