@@ -42,7 +42,12 @@ public class SmallStoreView extends View {
 
 	}
 
+<<<<<<< HEAD
 	/** Printar alla hï¿½ndelser INNAN de exekveras */
+=======
+	
+	/** Printar alla händelser INNAN de exekveras */
+>>>>>>> 7fcd5842fb66b846e1fc289dc25541df8c339ac1
 	public void update(Observable arg0, Object arg1) {
 		/**
 		 *
@@ -59,7 +64,11 @@ public class SmallStoreView extends View {
 //		state.allCustomer.get(Customer.getCustomerID()); //Kund-ID
 //		//Kassa ï¿½ppen/stï¿½ngd
 //		state.regQueue.freeRegisters;//Antal lediga kassor vid current time
+<<<<<<< HEAD
 //		//Total ledig tid fï¿½r kassor
+=======
+//		//TOTAL LEDIG TID FÖR KASSOR
+>>>>>>> 7fcd5842fb66b846e1fc289dc25541df8c339ac1
 //		state.numberOfCustomersNow; //Kunder i butiken just nu
 //		state.payedCustomers; //Kunder som betalat
 //		state.missedCustomers; //Fullt i butiken
@@ -80,6 +89,28 @@ public class SmallStoreView extends View {
 		super.update(arg0);
 		System.out.println(state.timeElapsed + "    " + arg0);
 		
+<<<<<<< HEAD
+=======
+		/**
+		 * BEHÖVER HäMTA IN:
+		 * 
+		 * Totalt antal kunder
+		 * Antal missade kunder
+		 * Totalt tid kassorna som kassorna varit lediga
+		 * Genomsnittlig ledig kassatid
+		 * %-sats för genomsnittlig ledig kassatid
+		 * Antalet kunder som behövs köa
+		 * Totala tiden som kunder köat
+		 * Genomsnittlig kö-tid
+		 */
+		System.out.println("RESULTAT ========");
+		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
+		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
+		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frïån öppning till sista kunden betalat");
+		System.out.println("3) Total tid" + state.numInQueue + "tvingats köa: " + state.totTimeInQueue + "te");
+		System.out.println("Genomsnittlig kötid: " + GENOMSNITTLIGKÖ-tid + "te");
+
+>>>>>>> 7fcd5842fb66b846e1fc289dc25541df8c339ac1
 	}
 	/** Printar slutresultatet */
 //	public void resultat() {
