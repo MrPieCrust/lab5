@@ -43,14 +43,11 @@ public class SmallStoreView extends View {
 
 	}
 
-<<<<<<< HEAD
-	/** Printar alla händelser INNAN de exekveras */
+	/** Printar alla hï¿½ndelser INNAN de exekveras */
 
-=======
 	/** Printar alla hï¿½ndelser INNAN de exekveras */
 	
 	/** Printar alla hï¿½ndelser INNAN de exekveras */
->>>>>>> 718833e414b44ab300bd6f8b402becdb12c56fe4
 	public void update(Observable arg0, Object arg1) {
 		/**
 		 *
@@ -61,20 +58,7 @@ public class SmallStoreView extends View {
 		DecimalFormat two = new DecimalFormat("#0.00");
 
 		super.update(arg0, arg1);
-<<<<<<< HEAD
-		System.out.println("nu printar vi");
-		
-		
-		System.out.println(state.timeElapsed);
-		System.out.println(state.regQueue.freeRegisters);
-		System.out.println(state.numberOfCustomersNow);
-		System.out.println(state.payedCustomers);
-		System.out.println(state.missedCustomers);
-		System.out.println(state.numInQueue);
-		System.out.println(state.totTimeInQueue);
-		System.out.println(state.regQueue.toString());
-		System.out.println(state.regQueue.size());
-=======
+
 //		state.timeElapsed; //Tid just nu
 //		arg0; //hï¿½ndelse
 //		state.allCustomer.get(Customer.getCustomerID()); //Kund-ID
@@ -104,18 +88,11 @@ public class SmallStoreView extends View {
 							+ state.numberOfCustomersNow+ " 	 " + state.payedCustomers+ "	" + state.missedCustomers+ "	"
 							+ state.numInQueue + "  	"+ state.totTimeInQueue + "	"+ state.lengthOfQueue + "	" + "allasomkÃ¶ar");
 		}
->>>>>>> 718833e414b44ab300bd6f8b402becdb12c56fe4
 		
-<<<<<<< HEAD
 	}
 
 	/** Printar slutresultatet */
-//	public void resultat() {
-=======
-		
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 		/**
 		 * BEHï¿½VER Hï¿½MTA IN:
 		 *  
@@ -137,7 +114,7 @@ public class SmallStoreView extends View {
 <<<<<<< HEAD
 		 */
 
-=======
+
 //		 */
 //		System.out.println("RESULTAT ========");
 //		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
@@ -145,20 +122,17 @@ public class SmallStoreView extends View {
 //		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frï¿½ï¿½n ï¿½ppning till sista kunden betalat");
 //		System.out.println("3) Total tid" + state.numInQueue + "tvingats kï¿½a: " + state.totTimeInQueue + "te");
 //		System.out.println("Genomsnittlig kï¿½tid: " + GENOMSNITTLIGKï¿½-tid + "te");
->>>>>>> 2f8c89a3b04f7e55d55787dce70ec8315d0560a9
->>>>>>> 718833e414b44ab300bd6f8b402becdb12c56fe4
-	}
 }
+
 //	public void update(Observable arg0) {
 //		super.update(arg0);
 //		System.out.println(state.timeElapsed + "    " + arg0);
->>>>>>> 8e190ab76e00fa2a85b456f65ba0d5cb0b383496
 //		
 //		System.out.println("RESULTAT ========");
 //		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
 //		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
-//		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frïån öppning till sista kunden betalat");
-//		System.out.println("3) Total tid" + state.numInQueue + "tvingats köa: " + state.totTimeInQueue + "te");
-//		System.out.println("Genomsnittlig kötid: " + GENOMSNITTLIGKÖ-tid + "te");
+//		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden frï¿½ï¿½n ï¿½ppning till sista kunden betalat");
+//		System.out.println("3) Total tid" + state.numInQueue + "tvingats kï¿½a: " + state.totTimeInQueue + "te");
+//		System.out.println("Genomsnittlig kï¿½tid: " + GENOMSNITTLIGKï¿½-tid + "te");
 //
 //}

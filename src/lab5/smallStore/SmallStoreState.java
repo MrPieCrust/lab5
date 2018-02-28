@@ -34,7 +34,7 @@ public class SmallStoreState extends State {
 	SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	public EventQueue eventQueue;
-	ArrayList<Customer> allCustomer;
+	ArrayList<Customer> allCustomer = new ArrayList<Customer>();
 	
 	
 	public SmallStoreState() {
@@ -56,13 +56,10 @@ public class SmallStoreState extends State {
 			return false;
 		}
 	}
-<<<<<<< HEAD
-=======
 	void eventHappened(Event event) {
 		setChanged();
 		notifyObservers(event);
 		}
->>>>>>> 718833e414b44ab300bd6f8b402becdb12c56fe4
 	void eventHappened() {
 		setChanged();
 		notifyObservers();
