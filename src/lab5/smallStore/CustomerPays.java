@@ -20,7 +20,12 @@ public class CustomerPays extends Event{
 		state.payedCustomers++;
 		state.regQueue.freeRegisters++;
 		if(state.regQueue.size()>0) {
-			state.regQueue.removeFirst();
+			state.regQueue.removeFirst();			
+		}
+		else if (state.regQueue.freeRegisters>1){
+			state.regQueue.openRegisters--;
+		}
+		else {
 			
 		}
 	}
