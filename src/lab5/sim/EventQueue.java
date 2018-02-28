@@ -5,10 +5,6 @@ import java.util.Collections;
 
 public class EventQueue {
 	public ArrayList<Event> eventQueue;
-	
-	public EventQueue() {
-		
-	}
 	/**
 	 * First creates a new temp with the exTimes then sorts them and puts them 
 	 * back in the right order for the eventQueue
