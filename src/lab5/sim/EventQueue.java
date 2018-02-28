@@ -3,11 +3,14 @@ package lab5.sim;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import lab5.smallStore.SmallStoreState;
+
 public class EventQueue {
 	public ArrayList<Event> eventQueue;
+	private SmallStoreState state;
 	
-	public EventQueue() {
-		
+	public EventQueue(SmallStoreState state) {
+		this.state = state;
 	}
 	/**
 	 * First creates a new temp ArrayList with the exTimes then sorts them and puts them 
@@ -34,6 +37,7 @@ public class EventQueue {
 	}
 	public Event getEvent() {
 		eventQueue = sort();
+		state.timeElapsed = eventQueue.get(0).getExTime();
 		return eventQueue.get(0);
 	}
 //	void sortList() {
