@@ -24,6 +24,7 @@ public class CustomerPays extends Event{
 		}
 		else if (state.regQueue.freeRegisters>1){
 			state.regQueue.openRegisters--;
+			state.regQueue.freeRegisters--;
 		}
 		else {
 			
