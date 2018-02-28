@@ -12,8 +12,7 @@ public class Simulator {
 	}
 	public void run() {
 		while (state.stopFlag==false) {
-			while (eventQueue.eventQueue.size()>0) {
-//				eventQueue.sort();				
+			while (eventQueue.queue.size()>0) {
 				eventQueue.getEvent().performEvent();
 
 			}

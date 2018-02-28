@@ -9,6 +9,10 @@ public class View implements Observer{
 		// TODO Auto-generated method stub
 		
 	}
+	public void update(Observable arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

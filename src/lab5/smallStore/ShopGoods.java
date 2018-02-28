@@ -5,23 +5,22 @@ import lab5.smallStore.customer.Customer;
 public class ShopGoods extends Event{
 	private double timeNextEvent;
 	private SmallStoreState state;
-	private TimeKeeper timeKeeper;
 	private Customer customer; 
 	
 	public ShopGoods(SmallStoreState state, double timeToEx, Customer customer) {
 		this.timeToEx = timeToEx;
 		this.state = state;
 		this.customer = customer;
-		state.timeKeeper = timeKeeper;
-		addToEventQueue();
+		state.eventQueue.queue.add(this);
+//		addToEventQueue(this);
 		
 	}
 	
-	void preformEvent() {
+	protected void performEvent() {
 		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
 			name = "Customer goes to pay";
-			state.eventHappened();
-			double tempPay = timeKeeper.calcPay();
+			state.eventHappened(customer);
+			double tempPay = state.timeKeeper.calcPay();
 			state.totTimeInReg += tempPay;
 			timeNextEvent = state.timeElapsed + tempPay;
 			new CustomerPays(state, timeNextEvent, customer);

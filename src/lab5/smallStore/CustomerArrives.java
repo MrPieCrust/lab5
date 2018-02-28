@@ -6,49 +6,49 @@ import lab5.sim.Event;
 import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
-public class CustomerArrives extends Event{
+public class CustomerArrives extends Event {
 	private CreateCustomer customerFactory;
 	private double timeNextEvent;
-	
+
 	public CustomerArrives(SmallStoreState state) {
 		this.state = state;
-		this.customerFactory = state.customerFactory;
-		timeKeeper = state.timeKeeper;
-		timeToEx = state.timeElapsed + timeKeeper.calcNextCustomer();
+		this.customerFactory = state.customerFactory;		
+		timeToEx = state.timeElapsed + state.timeKeeper.calcNextCustomer();
 		name = "Arrives";
-		addToEventQueue();
+		addToEventQueue(this);
 	}
+
 	public CustomerArrives(SmallStoreState state, String first) {
 		this.state = state;
 		this.customerFactory = state.customerFactory;
-		timeKeeper = state.timeKeeper;
 		timeToEx = 0;
 		name = "Arrives";
-		addToEventQueue();
+		addToEventQueue(this);
 	}
-	
-	void preformEvent() {
-		state.eventHappened();
 
-		if (state.timeElapsed >= state.closingTime) {	
+	protected void performEvent() {
+		if (state.allCustomer.size() > 0) {
+			state.eventHappened(state.allCustomer.get(state.allCustomer.size() - 1));
 		}
-		else if(!state.isFull()) {
+		if (state.timeElapsed >= state.closingTime) {
+			System.out.println("print");
+		} else if (!state.isFull()) {
 			createCustomer();
+//			state.newCustomer();
 			new CustomerArrives(state);
-		}
-		else {
+		} else {
 			state.missedCustomers++;
 			new CustomerArrives(state);
 		}
 	}
-	
+
 	private void createCustomer() {
 		state.allCustomer.add(customerFactory.newCustomer());
-		timeNextEvent = state.timeElapsed + timeKeeper.calcShop();
+		timeNextEvent = state.timeElapsed + state.timeKeeper.calcShop();
 		int custID = state.allCustomer.size() - 1;
 		state.numberOfCustomersNow++;
 		state.numberOfCustomers++;
 		new ShopGoods(state, timeNextEvent, state.allCustomer.get(custID));
-		
+
 	}
 }

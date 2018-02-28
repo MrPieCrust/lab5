@@ -9,6 +9,6 @@ public class Opens extends Event{
 		name = "The Store opens";
 		state.eventHappened();
 		new CustomerArrives(state, "förstakunden");
-		
+		new Closes(state);
 	}
 }

@@ -3,19 +3,17 @@ import lab5.sim.Event;
 import lab5.smallStore.customer.Customer;
 
 public class CustomerPays extends Event{
-	private SmallStoreState state;
-	private TimeKeeper timeKeeper;
+	private Customer customer;
 	
 	public CustomerPays(SmallStoreState state, double timeToEx, Customer customer) {
 		this.state = state;
 		this.timeToEx = timeToEx;
-		state.timeKeeper = timeKeeper;
 		name = "Payed at the register";
-		addToEventQueue();
+		addToEventQueue(this);
 	}
 	
-	void preformEvent() {
-		state.eventHappened();
+	protected void performEvent() {
+		state.eventHappened(customer);
 		state.numberOfCustomersNow--;
 		state.payedCustomers++;
 		state.regQueue.freeRegisters++;
