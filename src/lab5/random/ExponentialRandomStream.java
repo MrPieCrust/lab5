@@ -17,6 +17,10 @@ public class ExponentialRandomStream {
 	}
 	  
 	public double next() {
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 8e190ab76e00fa2a85b456f65ba0d5cb0b383496
 	  	return -Math.log(rand.nextDouble())/lambda;
 	}
 }
