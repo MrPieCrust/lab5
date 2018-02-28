@@ -49,7 +49,7 @@ public class SmallStoreView extends View {
 	
 	/** Printar alla h�ndelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
-		/**
+		/**detta rö asdjahsdhasjdhka
 		 *
 		 * 
 		 * Hela kassak�n
