@@ -44,7 +44,10 @@ public class SmallStoreView extends View {
 	}
 
 	/** Printar alla h�ndelser INNAN de exekveras */
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 2f8c89a3b04f7e55d55787dce70ec8315d0560a9
 	/** Printar alla h�ndelser INNAN de exekveras */
 	public void update(Observable arg0, Object arg1) {
 		/**
@@ -91,10 +94,18 @@ public class SmallStoreView extends View {
 		super.update(arg0);
 		System.out.println(state.timeElapsed + "    " + arg0);
 		
+<<<<<<< HEAD
 		/**
 		 * BEH�VER H�MTA IN:
 		 *  
 		 * Totalt antal kunderstate.regQueue.toString()
+=======
+
+		/**
+		 * BEH�VER H�MTA IN:
+		 * 
+		 * Totalt antal kunder
+>>>>>>> 2f8c89a3b04f7e55d55787dce70ec8315d0560a9
 		 * Antal missade kunder
 		 * Totalt tid kassorna som kassorna varit lediga
 		 * Genomsnittlig ledig kassatid
@@ -102,8 +113,18 @@ public class SmallStoreView extends View {
 		 * Antalet kunder som beh�vs k�a
 		 * Totala tiden som kunder k�at
 		 * Genomsnittlig k�-tid
+<<<<<<< HEAD
 		 */
 
+=======
+//		 */
+//		System.out.println("RESULTAT ========");
+//		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
+//		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
+//		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden fr��n �ppning till sista kunden betalat");
+//		System.out.println("3) Total tid" + state.numInQueue + "tvingats k�a: " + state.totTimeInQueue + "te");
+//		System.out.println("Genomsnittlig k�tid: " + GENOMSNITTLIGK�-tid + "te");
+>>>>>>> 2f8c89a3b04f7e55d55787dce70ec8315d0560a9
 	}
 	/** Printar slutresultatet */
 //	public void resultat() {

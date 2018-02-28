@@ -7,6 +7,7 @@ import lab5.smallStore.Closes;
 import lab5.smallStore.SmallStoreState;
 
 public class EventQueue {
+	public ArrayList<Event> eventQueue;
 	public ArrayList<Event> queue;
 	private SmallStoreState state;
 	
@@ -14,6 +15,7 @@ public class EventQueue {
 		this.state = state;
 		queue = new ArrayList<Event>();
 	}
+
 	/**
 	 * First creates a new temp ArrayList with the exTimes then sorts them and puts them 
 	 * back in the right order for the eventQueue
