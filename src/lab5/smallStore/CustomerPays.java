@@ -12,9 +12,6 @@ public class CustomerPays extends Event{
 		name = "Payed";
 		addToEventQueue(this);
 		custID = customer.getCustomerID();
-		if (state.regQueue.freeRegisters>0) {
-			state.regQueue.freeRegisters--;
-		}
 	}
 	
 	protected void performEvent() {
