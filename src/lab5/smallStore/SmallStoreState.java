@@ -10,6 +10,8 @@ import lab5.smallStore.customer.CreateCustomer;
 import lab5.smallStore.customer.Customer;
 
 public class SmallStoreState extends State {
+	public double totTimeFreeReg = 0;
+	public double totTimeOccReg = 0;
 	double totTimeInReg = 0;
 	double totTimeInQueue = 0;
 	int numberOfCustomers = 0;
@@ -21,7 +23,7 @@ public class SmallStoreState extends State {
 	double avTimeReg = 0;
 	double avTimeQueue = 0;
 	String status;
-	public final int maxCustomers = 5;
+	public final int maxCustomers = 10;
 	public final int maxRegisters = 2;
 	public final double closingTime = 10;
 	public final double uniformLowerShop = 0.5;
@@ -30,7 +32,7 @@ public class SmallStoreState extends State {
 	public final double uniformUpperPay = 3.0;
 	public final double exponentLambda = 1;
 	CreateCustomer customerFactory;
-	FIFO regQueue;
+	public FIFO regQueue;
 	public SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	public EventQueue eventQueue;
@@ -60,6 +62,14 @@ public class SmallStoreState extends State {
 		setChanged();
 		notifyObservers(event);
 		}
+	
+	public boolean isfree() {
+		if(regQueue.freeRegisters > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 //	void eventHappened() {
 //		setChanged();
 //		notifyObservers();

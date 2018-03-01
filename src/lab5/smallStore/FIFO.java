@@ -11,14 +11,14 @@ import lab5.smallStore.customer.Customer;
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
 	private SmallStoreState state;
-	int freeRegisters; 
+    int freeRegisters; 
 	int openRegisters;
 
 
 	public FIFO(SmallStoreState state) {
 		this.state = state;
-		openRegisters = 1;
-		freeRegisters = 1;
+		openRegisters = 2;
+		freeRegisters = 2;
 		
 	}
 	public void add(Customer item) {
@@ -72,6 +72,10 @@ public class FIFO{
 	public void regStat() {
 		
 	}
+	public int getFreeReg() {
+		return freeRegisters;
+	}
+	
 	public void removeFromReg() {
 		freeRegisters--;
 	}

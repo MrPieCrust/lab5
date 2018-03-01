@@ -2,8 +2,9 @@ package lab5.sim;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+import lab5.sim.*;
 import lab5.smallStore.Closes;
+import lab5.smallStore.FIFO;
 import lab5.smallStore.SmallStoreState;
 
 public class EventQueue {
@@ -42,8 +43,19 @@ public class EventQueue {
 	public Event getEvent() {
 		queue = sort();
 		state.timeElapsed = queue.get(0).getExTime();
+		
+		if(state.isfree()) {
+			state.totTimeFreeReg = (state.timeElapsed - state.totTimeOccReg) *state.regQueue.getFreeReg();
+			
+//			state.totTimeFreeReg *= state.maxRegisters;
+		}
+		else {
+			state.totTimeOccReg = (state.timeElapsed - state.totTimeFreeReg);
+			// * state.regQueue.getFreeReg()
+		}
+		
 		if(queue.size()>0) {
-		return queue.remove(0);
+			return queue.remove(0);
 		}
 		else {
 			return new Closes(state);
