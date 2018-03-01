@@ -31,7 +31,7 @@ public class SmallStoreState extends State {
 	public final double exponentLambda = 1;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
-	SmallStoreView storeView;
+	public SmallStoreView storeView;
 	TimeKeeper timeKeeper;
 	public EventQueue eventQueue;
 	ArrayList<Customer> allCustomer = new ArrayList<Customer>();

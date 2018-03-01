@@ -38,10 +38,9 @@ public class SmallStoreView extends View {
 		System.out.println("Ankomsthastighet, lamba..: " + state.exponentLambda); // Ankomsthastighet
 		System.out.println("Plocktider, [P_min..Pmax]: " + state.uniformLowerShop +", "+ state.uniformUpperShop); // Plocktid
 		System.out.println("Betaltider, [K_min..Kmax]: " + state.uniformLowerPay + ", "+ state.uniformUpperPay); // Betaltid
-		System.out.println("Fr�, f...................: " + state.fseed); // Fr�
-		System.out.println("F�RLOPP" + "\n=======");
-		System.out.println("Tid	H�ndelse	 Kund	?	led	ledT	I	$	:-(	k�at	k�T	k�ar	[Kassak�..]");
-
+		System.out.println("Frö, f...................: " + state.fseed); // Fr�
+		System.out.println("FÖRLOPP" + "\n=======\n");
+		System.out.println("Tid	Händelse	 Kund	?	led	ledT	I	$	:-(	köat	köT	köar	[Kassakö..]");
 	}
 
 	/** Printar alla h�ndelser INNAN de exekveras */
@@ -94,12 +93,12 @@ public class SmallStoreView extends View {
 	public void printResult() {
 		
 
-		System.out.println("RESULTAT ========");
-		System.out.println("1) Av " + state.numberOfCustomersNow + "kunder handlade" + state.payedCustomers + "medan " + state.missedCustomers + "missades");
-		System.out.println("2) Total tid " + state.regQueue.freeRegisters + "varit lediga: " + "kassatidTOT" +" te");
-		System.out.println("Genomsnittlig ledig kassatid: " + "LEDIG KASSATID" + "te (dvs " + "PROCENT" + "av tiden från öppning till sista kunden betalat");
-		System.out.println("3) Total tid" + state.numInQueue + "tvingats k�a: " + state.totTimeInQueue + "te");
-		System.out.println("Genomsnittlig k�tid: " + state.totTimeInQueue / state.numInQueue + "te");
+		System.out.println("\nRESULTAT \n========\n");
+		System.out.println("1) Av " + (state.payedCustomers + state.missedCustomers) + " kunder handlade " + state.payedCustomers + " medan " + state.missedCustomers + " missades. \n");
+		System.out.println("2) Total tid " + state.regQueue.freeRegisters + " varit lediga: " + "kassatidTOT" +" te");
+		System.out.println("Genomsnittlig ledig kassatid: " + "LEDIG KASSATID" + "te (dvs " + "PROCENT" + "av tiden från öppning till sista kunden betalat) \n");
+		System.out.println("3) Total tid " + state.numInQueue + " tvingats köa: " + two.format(state.totTimeInQueue) + " te");
+		System.out.println("Genomsnittlig k�tid: " + two.format(state.totTimeInQueue / state.numInQueue) + "te");
 	}
 		/**
 		 * BEH�VER H�MTA IN:

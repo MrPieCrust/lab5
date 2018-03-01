@@ -16,6 +16,8 @@ public class Simulator {
 				eventQueue.getEvent().performEvent();
 
 			}
+			state.storeView.printResult();
+
 		}
 	}
 
