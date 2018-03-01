@@ -18,11 +18,7 @@ import lab5.smallStore.customer.Customer;
 public class FIFO {
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
 	private SmallStoreState state;
-<<<<<<< HEAD
     int freeRegisters; 
-=======
-	int freeRegisters;
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
 	int openRegisters;
 
 	/**
@@ -35,15 +31,9 @@ public class FIFO {
 	 */
 	public FIFO(SmallStoreState state) {
 		this.state = state;
-<<<<<<< HEAD
 		openRegisters = 2;
 		freeRegisters = 2;
-		
-=======
-		openRegisters = 6;
-		freeRegisters = 6;
 
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
 	}
 
 	/**
@@ -107,7 +97,7 @@ public class FIFO {
 		return regQueue.size();
 	}
 
-<<<<<<< HEAD
+
 	public void regStat() {
 		
 	}
@@ -115,10 +105,9 @@ public class FIFO {
 		return freeRegisters;
 	}
 	
-	public void removeFromReg() {
-=======
+
 	public void removeFromReg() { // fråga sam om denna. har han inte använt den kan ni ta bort.
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
+
 		freeRegisters--;
 	}
 

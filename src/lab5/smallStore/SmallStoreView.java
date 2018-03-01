@@ -80,17 +80,11 @@ public class SmallStoreView extends View {
 		}
 		else {
 			//System.out.println(arg1);
-<<<<<<< HEAD
+
 			System.out.println(two.format(state.timeElapsed) + "	"+ ((Event) arg1).getName() + "		 " + ((Event) arg1).getCustID() + "	" + state.status + "	  " +
 					 state.regQueue.freeRegisters+ "	" + two.format(state.totTimeFreeReg) +"	"
 							+ state.numberOfCustomersNow+ " 	 " + state.payedCustomers+ "	" + state.missedCustomers+ "	"
 							+ state.numInQueue + "  	"+ two.format(state.totTimeInQueue) + "	"+ state.lengthOfQueue + "	" + state.regQueue.toString());
-=======
-			System.out.println(two.format(state.timeElapsed) + "	"+ ((Event) arg1).getName() + "		" + ((Event) arg1).getCustID() + "	" + state.status + "	" +
-					 state.regQueue.freeRegisters+ "	" + "ledT"+"	"
-							+ state.numberOfCustomersNow+ "	" + state.payedCustomers+ "	" + state.missedCustomers+ "	"
-							+ state.numInQueue + "	"+ two.format(state.totTimeInQueue) + "	"+ state.lengthOfQueue + "	" + state.regQueue.toString());
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
 		}
 		
 	}

@@ -30,10 +30,7 @@ public class SmallStoreState extends State {
 	double avTimeQueue = 0;
 	String status;
 	public final int maxCustomers = 10;
-<<<<<<< HEAD
 	public final int maxRegisters = 2;
-=======
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
 	public final double closingTime = 10;
 	public final double uniformLowerShop = 2.0;
 	public final double uniformUpperShop = 3.0;
@@ -83,7 +80,7 @@ public class SmallStoreState extends State {
 		setChanged();
 		notifyObservers(event);
 		}
-<<<<<<< HEAD
+
 	
 	public boolean isfree() {
 		if(regQueue.freeRegisters > 0) {
@@ -96,8 +93,6 @@ public class SmallStoreState extends State {
 //		setChanged();
 //		notifyObservers();
 //		}
-=======
 
->>>>>>> 913dd423a097e6b9f6a5e53ad8924e5011b69b2b
 
 }
