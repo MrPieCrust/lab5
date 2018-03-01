@@ -21,14 +21,13 @@ public class SmallStoreState extends State {
 	double avTimeReg = 0;
 	double avTimeQueue = 0;
 	String status;
-	public final int maxCustomers = 5;
-	public final int maxRegisters = 2;
+	public final int maxCustomers = 10;
 	public final double closingTime = 10;
-	public final double uniformLowerShop = 0.5;
-	public final double uniformUpperShop = 1.0;
-	public final double uniformLowerPay = 2.0;
-	public final double uniformUpperPay = 3.0;
-	public final double exponentLambda = 1;
+	public final double uniformLowerShop = 2.0;
+	public final double uniformUpperShop = 3.0;
+	public final double uniformLowerPay = 0.5;
+	public final double uniformUpperPay = 1.0;
+	public final double exponentLambda = 3;
 	CreateCustomer customerFactory;
 	FIFO regQueue;
 	public SmallStoreView storeView;
@@ -38,18 +37,18 @@ public class SmallStoreState extends State {
 	
 	
 	public SmallStoreState() {
-		storeView = new SmallStoreView(this);
 		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);
 		eventQueue = new EventQueue(this);
+		storeView = new SmallStoreView(this);
 		this.addObserver(storeView);
 		new Opens(this);
 		
 		
 	}
 	boolean isFull() {
-		if(numberOfCustomers==maxCustomers) {
+		if(numberOfCustomersNow==maxCustomers) {
 			return true;
 		}
 		else {

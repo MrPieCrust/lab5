@@ -17,8 +17,8 @@ public class FIFO{
 
 	public FIFO(SmallStoreState state) {
 		this.state = state;
-		openRegisters = 1;
-		freeRegisters = 1;
+		openRegisters = 6;
+		freeRegisters = 6;
 		
 	}
 	public void add(Customer item) {
@@ -26,10 +26,6 @@ public class FIFO{
 		item.timeQueued = state.timeElapsed;
 		state.numInQueue++;
 		state.lengthOfQueue++;
-		if (regQueue.size() > 2 && openRegisters<state.maxRegisters) {
-			openRegisters++;
-			freeRegisters++;
-		}
 	}
 
 	public void removeFirst() {

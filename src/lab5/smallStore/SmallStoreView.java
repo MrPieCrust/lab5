@@ -9,9 +9,7 @@ import lab5.random.*;
 import lab5.smallStore.customer.*;
 
 public class SmallStoreView extends View {
-
 	private SmallStoreState state;
-	private FIFO regQueue;
 	private ExponentialRandomStream random;
 	DecimalFormat two = new DecimalFormat("#0.00");
 
@@ -20,7 +18,6 @@ public class SmallStoreView extends View {
 
 	public SmallStoreView(SmallStoreState state) {
 		this.state = state;
-		this.regQueue = state.regQueue;
 		printParameters();
 			
 
@@ -33,14 +30,14 @@ public class SmallStoreView extends View {
 		
 		
 		System.out.println("PARAMETRAR" + "\n======="); // Parametrar
-		System.out.println("Antal kassor, N..........: " + state.maxRegisters); // Antal kassor
+		System.out.println("Antal kassor, N..........: " + state.regQueue.openRegisters); // Antal kassor
 		System.out.println("Max som ryms, M..........: " + state.maxCustomers); // Max personer i butik
 		System.out.println("Ankomsthastighet, lamba..: " + state.exponentLambda); // Ankomsthastighet
 		System.out.println("Plocktider, [P_min..Pmax]: " + state.uniformLowerShop +", "+ state.uniformUpperShop); // Plocktid
 		System.out.println("Betaltider, [K_min..Kmax]: " + state.uniformLowerPay + ", "+ state.uniformUpperPay); // Betaltid
 		System.out.println("Frö, f...................: " + state.fseed); // Fr�
 		System.out.println("FÖRLOPP" + "\n=======\n");
-		System.out.println("Tid	Händelse	 Kund	?	led	ledT	I	$	:-(	köat	köT	köar	[Kassakö..]");
+		System.out.println("Tid	Händelse	Kund	?	led	ledT	I	$	:-(	köat	köT	köar	[Kassakö..]");
 	}
 
 	/** Printar alla h�ndelser INNAN de exekveras */
@@ -83,10 +80,10 @@ public class SmallStoreView extends View {
 		}
 		else {
 			//System.out.println(arg1);
-			System.out.println(two.format(state.timeElapsed) + "	"+ ((Event) arg1).getName() + "	 " + ((Event) arg1).getCustID() + "	" + state.status + "	  " +
+			System.out.println(two.format(state.timeElapsed) + "	"+ ((Event) arg1).getName() + "		" + ((Event) arg1).getCustID() + "	" + state.status + "	" +
 					 state.regQueue.freeRegisters+ "	" + "ledT"+"	"
-							+ state.numberOfCustomersNow+ " 	 " + state.payedCustomers+ "	" + state.missedCustomers+ "	"
-							+ state.numInQueue + "  	"+ two.format(state.totTimeInQueue) + "	"+ state.lengthOfQueue + "	" + state.regQueue.toString());
+							+ state.numberOfCustomersNow+ "	" + state.payedCustomers+ "	" + state.missedCustomers+ "	"
+							+ state.numInQueue + "	"+ two.format(state.totTimeInQueue) + "	"+ state.lengthOfQueue + "	" + state.regQueue.toString());
 		}
 		
 	}
