@@ -10,7 +10,6 @@ import lab5.smallStore.customer.Customer;
 
 public class FIFO{
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
-//	private ArrayList<Register> registers = new ArrayList<Register>();
 	private SmallStoreState state;
 	int freeRegisters; 
 	int openRegisters;
@@ -78,32 +77,5 @@ public class FIFO{
 	}
 
 }
-//class Register{
-//	private boolean open = false;
-//	private boolean free = false;
-//	
-//	void changeOpen() {
-//		if(open) {
-//			open=false;
-//		}
-//		else {
-//			open=true;
-//		}
-//	}
-//
-//	void changeFree() {
-//		if(free) {
-//			free = false;
-//		}
-//		else {
-//			free = true;
-//		}
-//	}
-//	public boolean isOpen() {
-//		return open;
-//	}
-//	public boolean isFree() {
-//		return free;
-//	}
 
 	
