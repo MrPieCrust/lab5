@@ -13,6 +13,7 @@ public class SmallStoreView extends View {
 	private SmallStoreState state;
 	private FIFO regQueue;
 	private ExponentialRandomStream random;
+	DecimalFormat two = new DecimalFormat("#0.00");
 
 
 	
@@ -55,7 +56,6 @@ public class SmallStoreView extends View {
 		 * Hela kassak�n
 		 * 
 		 */
-		DecimalFormat two = new DecimalFormat("#0.00");
 
 		super.update(arg0, arg1);
 
@@ -91,20 +91,20 @@ public class SmallStoreView extends View {
 		}
 		
 	}
+	public void printResult() {
+		
 
-	/** Printar slutresultatet */
-
-		/**
-		 * BEH�VER H�MTA IN:
-		 *  
-		 * Totalt antal kunderstate.regQueue.toString()
-=======
-
+		System.out.println("RESULTAT ========");
+		System.out.println("1) Av " + state.numberOfCustomersNow + "kunder handlade" + state.payedCustomers + "medan " + state.missedCustomers + "missades");
+		System.out.println("2) Total tid " + state.regQueue.freeRegisters + "varit lediga: " + "kassatidTOT" +" te");
+		System.out.println("Genomsnittlig ledig kassatid: " + "LEDIG KASSATID" + "te (dvs " + "PROCENT" + "av tiden från öppning till sista kunden betalat");
+		System.out.println("3) Total tid" + state.numInQueue + "tvingats k�a: " + state.totTimeInQueue + "te");
+		System.out.println("Genomsnittlig k�tid: " + state.totTimeInQueue / state.numInQueue + "te");
+	}
 		/**
 		 * BEH�VER H�MTA IN:
 		 * 
 		 * Totalt antal kunder
->>>>>>> 2f8c89a3b04f7e55d55787dce70ec8315d0560a9
 		 * Antal missade kunder
 		 * Totalt tid kassorna som kassorna varit lediga
 		 * Genomsnittlig ledig kassatid
@@ -112,28 +112,9 @@ public class SmallStoreView extends View {
 		 * Antalet kunder som beh�vs k�a
 		 * Totala tiden som kunder k�at
 		 * Genomsnittlig k�-tid
-<<<<<<< HEAD
-		 */
+ 		 */
 
 
-//		 */
-//		System.out.println("RESULTAT ========");
-//		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
-//		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
-//		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden fr��n �ppning till sista kunden betalat");
-//		System.out.println("3) Total tid" + state.numInQueue + "tvingats k�a: " + state.totTimeInQueue + "te");
-//		System.out.println("Genomsnittlig k�tid: " + GENOMSNITTLIGK�-tid + "te");
+
 }
 
-//	public void update(Observable arg0) {
-//		super.update(arg0);
-//		System.out.println(state.timeElapsed + "    " + arg0);
-//		
-//		System.out.println("RESULTAT ========");
-//		System.out.println("1) Av " + state.numberOfCustomers + "kunder handlade" + "medan " + state.missedCustomers + "missades");
-//		System.out.println("2) Total tid " + state.freeRegisters + "varit lediga: " + TOTAL TID +" te");
-//		System.out.println("Genomsnittlig ledig kassatid: " + LEDIG KASSATID + "te (dvs " + PROCENT + "av tiden fr��n �ppning till sista kunden betalat");
-//		System.out.println("3) Total tid" + state.numInQueue + "tvingats k�a: " + state.totTimeInQueue + "te");
-//		System.out.println("Genomsnittlig k�tid: " + GENOMSNITTLIGK�-tid + "te");
-//
-//}
