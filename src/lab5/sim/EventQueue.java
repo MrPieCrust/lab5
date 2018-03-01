@@ -61,30 +61,19 @@ public class EventQueue {
 	 */
 	public Event getEvent() {
 		queue = sort();
+		double timeBetween = queue.get(0).getExTime() - state.timeElapsed;
 		state.timeElapsed = queue.get(0).getExTime();
-
+		
 		if (queue.size() > 0) {
-			return queue.remove(0);
-		} else {
-
-		
-		if(state.isfree()) {
-			state.totTimeFreeReg = (state.timeElapsed - state.totTimeOccReg) *state.regQueue.getFreeReg();
-			
-//			state.totTimeFreeReg *= state.maxRegisters;
-		}
-		else {
-			state.totTimeOccReg = (state.timeElapsed - state.totTimeFreeReg);
-			// * state.regQueue.getFreeReg()
-		}
-		
-		if(queue.size()>0) {
+			if(state.isfree()) {
+				state.totTimeFreeReg += timeBetween * state.regQueue.getFreeReg();
+			}
 			return queue.remove(0);
 		}
 		else {
 
 			return new Closes(state);
 		}
-	}
+//	}
 
 	}}
