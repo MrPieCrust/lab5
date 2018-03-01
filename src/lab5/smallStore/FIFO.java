@@ -75,6 +75,20 @@ public class FIFO{
 	public void removeFromReg() {
 		freeRegisters--;
 	}
+	public String toString() {
+		String count = "[";
+		for (int i = 0; i < regQueue.size(); i++) {
+			if(count.length() == 1) {
+				count +=  String.valueOf(regQueue.get(i).getCustomerID()); 
+			} else if(count.length() > 1) {
+				count +=  "," + String.valueOf(regQueue.get(i).getCustomerID()); 
+				
+			}
+			
+		}
+		count += "]";
+		return count;
+	}
 
 }
 
