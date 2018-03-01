@@ -62,11 +62,11 @@ public class EventQueue {
 	public Event getEvent() {
 		queue = sort();
 		state.timeElapsed = queue.get(0).getExTime();
-<<<<<<< HEAD
+
 		if (queue.size() > 0) {
 			return queue.remove(0);
 		} else {
-=======
+
 		
 		if(state.isfree()) {
 			state.totTimeFreeReg = (state.timeElapsed - state.totTimeOccReg) *state.regQueue.getFreeReg();
@@ -82,7 +82,7 @@ public class EventQueue {
 			return queue.remove(0);
 		}
 		else {
->>>>>>> fb9acfa7bad1f281f16325b79687ffebe13e2e7e
+
 			return new Closes(state);
 		}
 	}
