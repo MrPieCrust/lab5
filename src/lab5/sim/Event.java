@@ -45,7 +45,7 @@ public class Event {
 	/**
 	 * Customer ID for the first person that arrives to the store.
 	 * 
-	 * @return
+	 * @return 0
 	 */
 	public int getCustID() {
 		return 0;

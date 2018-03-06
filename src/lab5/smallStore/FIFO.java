@@ -54,6 +54,8 @@ public class FIFO {
 	 * freeRegisters decreases by one and so does the lengthOfQueue variable.
 	 * 
 	 * throws a NoSuchElementException if there is no Customer in the FIFO
+	 * 
+	 * @param item- an item of type Customer
 	 */
 	public void thereWasNoQueue(Customer item) {
 		double tempPay = state.timeKeeper.calcPay();
