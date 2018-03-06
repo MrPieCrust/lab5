@@ -18,6 +18,7 @@ import lab5.smallStore.customer.Customer;
 public class FIFO {
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
 	private SmallStoreState state;
+//	private ArrayList<Double> wastedRegTime = new ArrayList<Double>();
     int freeRegisters; 
 	int openRegisters;
 
@@ -31,9 +32,11 @@ public class FIFO {
 	 */
 	public FIFO(SmallStoreState state) {
 		this.state = state;
-		openRegisters = 2;
-		freeRegisters = 2;
-
+		openRegisters = state.maxRegisters;
+		freeRegisters = state.maxRegisters;
+//		for (int counter=0;counter<freeRegisters;counter++) {
+//			wastedRegTime.add(0.0);
+//		}
 	}
 
 	/**
@@ -46,10 +49,15 @@ public class FIFO {
 	 *            - an object of type customer that is to be added
 	 */
 	public void add(Customer item) {
-		regQueue.add(item);
-		item.timeQueued = state.timeElapsed;
-		state.numInQueue++;
-		state.lengthOfQueue++;
+		if ((freeRegisters>0)&&isEmpty()) {
+			thereWasNoQueue(item);
+		}
+		else {
+			regQueue.add(item);
+//			item.timeQueued = state.timeElapsed;
+			state.numInQueue++;
+			state.lengthOfQueue++;
+		}
 	}
 
 	/**
@@ -59,21 +67,53 @@ public class FIFO {
 	 * 
 	 * throws a NoSuchElementException if there is no Customer in the FIFO
 	 */
+//	public ArrayList<Double> getWasted() {
+//		return wastedRegTime;
+//	}
+	public void thereWasNoQueue(Customer item) {
+		double tempPay = state.timeKeeper.calcPay();
+		state.totTimeInReg += tempPay;
+		double timeNextEvent = state.timeElapsed + tempPay;
+		new CustomerPays(state, timeNextEvent, item);
+		removeFreeReg();
+	}
+	/**
+	 * removes a free register
+	 */
+	public void removeFreeReg() {
+		freeRegisters--;
+//		wastedRegTime.remove(0);
+	}
+	/**
+	 * adds a free register but also checks if there's someone in queue
+	 */
+	public void addFreeReg() {
+		if (isEmpty()==false) {
+			removeFirst();
+		}
+		else {
+			freeRegisters++;
+//			wastedRegTime.add(state.timeElapsed);
+		}
+	}
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
 			double tempPay = state.timeKeeper.calcPay();
-			state.totTimeInReg += tempPay;
+//			state.totTimeInReg += tempPay;
 			new CustomerPays(state, state.timeElapsed + tempPay, regQueue.get(0));
-			regQueue.get(0).timeQueued = state.timeElapsed - regQueue.get(0).timeQueued;
-			state.totTimeInQueue += regQueue.get(0).timeQueued;
+//			addTimeInQueue(regQueue.get(0));
 			regQueue.remove(0);
 			state.lengthOfQueue--;
-			freeRegisters--;
+//			removeFreeReg();
 
 		} else {
 			throw new NoSuchElementException();
 		}
 	}
+//	public void addTimeInQueue(Customer item) {
+//		item.timeQueued = state.timeElapsed - item.timeQueued;
+//		state.totTimeInQueue += item.timeQueued;
+//	}
 
 	/**
 	 * Checks if the FIFO is empty
@@ -97,20 +137,20 @@ public class FIFO {
 		return regQueue.size();
 	}
 
-
-	public void regStat() {
-		
-	}
+//	public void regStat() {
+//		
+//	}
 	public int getFreeReg() {
 		return freeRegisters;
 	}
-	
-
-	public void removeFromReg() { // fråga sam om denna. har han inte använt den kan ni ta bort.
-
-		freeRegisters--;
+	public boolean isRegFree() {
+		if (freeRegisters>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-
 	/**
 	 * The method toString prints out the customerID for every customer in the FIFO
 	 * ex. [1,5,3,6]

@@ -31,6 +31,7 @@ public class ShopGoods extends Event{
 		this.timeToEx = timeToEx;
 		this.state = state;
 		this.customer = customer;
+		name="Goods";
 		state.eventQueue.queue.add(this);
 		custID = customer.getCustomerID();
 //		addToEventQueue(this);
@@ -45,21 +46,22 @@ public class ShopGoods extends Event{
 	 * If not the customer is added to the FIFO
 	 */
 	protected void performEvent() {
-		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
-			name = "Goods";
-			state.eventHappened(this);
-			double tempPay = state.timeKeeper.calcPay();
-			state.totTimeInReg += tempPay;
-			timeNextEvent = state.timeElapsed + tempPay;
-			new CustomerPays(state, timeNextEvent, customer);
-			state.regQueue.freeRegisters--;
-		}
-		else {
-			name = "Goods";
+//		if(state.regQueue.isEmpty() && state.regQueue.freeRegisters>0) {
+//			name = "Goods";
 			state.eventHappened(this);
 			state.regQueue.add(customer);
+//			double tempPay = state.timeKeeper.calcPay();
+//			state.totTimeInReg += tempPay;
+//			timeNextEvent = state.timeElapsed + tempPay;
+//			new CustomerPays(state, timeNextEvent, customer);
+//			state.regQueue.freeRegisters--;
+//		}
+//		else {
+//			name = "Goods";
+//			state.eventHappened(this);
+//			state.regQueue.add(customer);
 		
-		}
+//		}
 	}
 
 	/**

@@ -47,14 +47,7 @@ public class CustomerPays extends Event {
 		state.eventHappened(this);
 		state.numberOfCustomersNow--;
 		state.payedCustomers++;
-		state.regQueue.freeRegisters++;
-		if (state.regQueue.size() > 0) {
-			state.regQueue.removeFirst();
-		} else if (state.regQueue.freeRegisters > 1) {
-			state.regQueue.freeRegisters--;
-		} else {
-
-		}
+		state.regQueue.addFreeReg();
 	}
 
 	/**

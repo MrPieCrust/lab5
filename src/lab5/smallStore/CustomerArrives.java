@@ -54,7 +54,7 @@ public class CustomerArrives extends Event {
 	 * This event checks is the store is full if it is missed customers are 
 	 * increased and a new event of CustomerArrives is created
 	 * 
-	 * If not a new customer is created and a new event of CustomerArrives is
+	 * If not, a new customer is created and a new event of CustomerArrives is
 	 * created
 	 */
 	protected void performEvent() {

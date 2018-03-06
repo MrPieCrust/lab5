@@ -77,18 +77,33 @@ public class SmallStoreState extends State {
 	 * @param event - sends in the event that changes the state as arg1
 	 */
 	void eventHappened(Event event) {
+//		if (!regQueue.isEmpty()) {
+//			double timeBetween = eventQueue.getQueue().get(0).getExTime()-timeElapsed;	
+//			timeElapsed = eventQueue.getQueue().get(0).getExTime();
+//			if(regQueue.isRegFree()) {
+//					totTimeFreeReg+=timeBetween * regQueue.getFreeReg();
+//			}
+//		}
+		if (eventQueue.getQueue().size()>0) {
+//			for (int counter=0;counter<regQueue.getWasted().size();counter++) { 
+			totTimeFreeReg+=timeBetween*regQueue.getFreeReg();
+			totTimeInQueue+=timeBetween*regQueue.size();
+//			}
+		}
+		
+//		for (int counter=0;counter<)
 		setChanged();
 		notifyObservers(event);
 		}
 
 	
-	public boolean isfree() {
-		if(regQueue.freeRegisters > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public boolean isfree() {
+//		if(regQueue.freeRegisters > 0) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 //	void eventHappened() {
 //		setChanged();
 //		notifyObservers();
