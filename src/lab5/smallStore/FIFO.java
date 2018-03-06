@@ -34,9 +34,6 @@ public class FIFO {
 		this.state = state;
 		openRegisters = state.maxRegisters;
 		freeRegisters = state.maxRegisters;
-//		for (int counter=0;counter<freeRegisters;counter++) {
-//			wastedRegTime.add(0.0);
-//		}
 	}
 
 	/**
@@ -54,7 +51,6 @@ public class FIFO {
 		}
 		else {
 			regQueue.add(item);
-//			item.timeQueued = state.timeElapsed;
 			state.numInQueue++;
 			state.lengthOfQueue++;
 		}
@@ -67,9 +63,6 @@ public class FIFO {
 	 * 
 	 * throws a NoSuchElementException if there is no Customer in the FIFO
 	 */
-//	public ArrayList<Double> getWasted() {
-//		return wastedRegTime;
-//	}
 	public void thereWasNoQueue(Customer item) {
 		double tempPay = state.timeKeeper.calcPay();
 		state.totTimeInReg += tempPay;
@@ -82,7 +75,6 @@ public class FIFO {
 	 */
 	public void removeFreeReg() {
 		freeRegisters--;
-//		wastedRegTime.remove(0);
 	}
 	/**
 	 * adds a free register but also checks if there's someone in queue
@@ -93,18 +85,14 @@ public class FIFO {
 		}
 		else {
 			freeRegisters++;
-//			wastedRegTime.add(state.timeElapsed);
 		}
 	}
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
 			double tempPay = state.timeKeeper.calcPay();
-//			state.totTimeInReg += tempPay;
 			new CustomerPays(state, state.timeElapsed + tempPay, regQueue.get(0));
-//			addTimeInQueue(regQueue.get(0));
 			regQueue.remove(0);
 			state.lengthOfQueue--;
-//			removeFreeReg();
 
 		} else {
 			throw new NoSuchElementException();
@@ -137,9 +125,7 @@ public class FIFO {
 		return regQueue.size();
 	}
 
-//	public void regStat() {
-//		
-//	}
+
 	public int getFreeReg() {
 		return freeRegisters;
 	}

@@ -43,12 +43,7 @@ public class EventQueue {
 	public Event getEvent() {
 		queue = sort();
 		state.timeBetween = queue.get(0).getExTime() - state.timeElapsed;
-		state.timeElapsed = queue.get(0).getExTime();
-		
-//		if(queue.size()>0) {
-//		double timeBetween = queue.get(0).getExTime() - state.timeElapsed;
-//		state.timeElapsed = queue.get(0).getExTime();
-//		
+		state.timeElapsed = queue.get(0).getExTime();	
 		if (queue.size() > 0) {
 			return queue.remove(0);
 		}
