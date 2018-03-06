@@ -18,6 +18,7 @@ import lab5.smallStore.customer.Customer;
 public class SmallStoreState extends State {
 	public double totTimeFreeReg = 0;
 	public double totTimeOccReg = 0;
+	public double oneRegFree = 0;
 	double totTimeInReg = 0;
 	double totTimeInQueue = 0;
 	int numberOfCustomers = 0;
