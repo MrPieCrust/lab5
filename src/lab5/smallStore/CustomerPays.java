@@ -12,7 +12,6 @@ import lab5.smallStore.customer.Customer;
  *
  */
 public class CustomerPays extends Event {
-	private Customer customer;
 	private int custID;
 
 	/**
@@ -33,11 +32,12 @@ public class CustomerPays extends Event {
 		addToEventQueue(this);
 		custID = customer.getCustomerID();
 	}
+
 	/**
 	 * The method performEvent executes the code for the specific event.
 	 * 
-	 * This method decreases numberOfCustomers by 1 and increases payedCustomers
-	 * and freeRegisters by 1
+	 * This method decreases numberOfCustomers by 1 and increases payedCustomers and
+	 * freeRegisters by 1
 	 * 
 	 * If the FIFO has customers it calls the method removeFirst
 	 * 

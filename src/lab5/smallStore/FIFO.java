@@ -1,11 +1,7 @@
 package lab5.smallStore;
 
-import java.awt.Event;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
-import javax.naming.TimeLimitExceededException;
-
 import lab5.smallStore.customer.Customer;
 
 /**
@@ -18,9 +14,7 @@ import lab5.smallStore.customer.Customer;
 public class FIFO {
 	private ArrayList<Customer> regQueue = new ArrayList<Customer>();
 	private SmallStoreState state;
-//	private ArrayList<Double> wastedRegTime = new ArrayList<Double>();
-    int freeRegisters; 
-	int openRegisters;
+	int freeRegisters;
 
 	/**
 	 * The constructor of the fifo decides the amount of open and free registers the
@@ -32,7 +26,6 @@ public class FIFO {
 	 */
 	public FIFO(SmallStoreState state) {
 		this.state = state;
-		openRegisters = state.maxRegisters;
 		freeRegisters = state.maxRegisters;
 	}
 
@@ -46,10 +39,9 @@ public class FIFO {
 	 *            - an object of type customer that is to be added
 	 */
 	public void add(Customer item) {
-		if ((freeRegisters>0)&&isEmpty()) {
+		if ((freeRegisters > 0) && isEmpty()) {
 			thereWasNoQueue(item);
-		}
-		else {
+		} else {
 			regQueue.add(item);
 			state.numInQueue++;
 			state.lengthOfQueue++;
@@ -70,23 +62,28 @@ public class FIFO {
 		new CustomerPays(state, timeNextEvent, item);
 		removeFreeReg();
 	}
+
 	/**
 	 * removes a free register
 	 */
 	public void removeFreeReg() {
 		freeRegisters--;
 	}
+
 	/**
 	 * adds a free register but also checks if there's someone in queue
 	 */
 	public void addFreeReg() {
-		if (isEmpty()==false) {
+		if (isEmpty() == false) {
 			removeFirst();
-		}
-		else {
+		} else {
 			freeRegisters++;
 		}
 	}
+
+	/**
+	 * removes the first customer in the fifo line if there is one.
+	 */
 	public void removeFirst() {
 		if (regQueue.size() > 0) {
 			double tempPay = state.timeKeeper.calcPay();
@@ -98,10 +95,6 @@ public class FIFO {
 			throw new NoSuchElementException();
 		}
 	}
-//	public void addTimeInQueue(Customer item) {
-//		item.timeQueued = state.timeElapsed - item.timeQueued;
-//		state.totTimeInQueue += item.timeQueued;
-//	}
 
 	/**
 	 * Checks if the FIFO is empty
@@ -125,21 +118,31 @@ public class FIFO {
 		return regQueue.size();
 	}
 
-
+	/**
+	 * 
+	 * @return - the number of free registers.
+	 */
 	public int getFreeReg() {
 		return freeRegisters;
 	}
+
+	/**
+	 * 
+	 * @return - true if there is a free register, false otherwise.
+	 */
 	public boolean isRegFree() {
-		if (freeRegisters>0) {
+		if (freeRegisters > 0) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
+
 	/**
-	 * The method toString prints out the customerID for every customer in the FIFO
+	 * The method toString returns out the customerID for every customer in the FIFO
 	 * ex. [1,5,3,6]
+	 * 
+	 * @return - the fifo queue
 	 */
 	public String toString() {
 		String count = "[";
