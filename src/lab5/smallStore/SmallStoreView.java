@@ -95,7 +95,11 @@ public class SmallStoreView extends View {
 		System.out.println("1) Av " + (state.payedCustomers + state.missedCustomers) + " kunder handlade " + state.payedCustomers + " medan " + state.missedCustomers + " missades. \n");
 		System.out.println("2) Total tid " + state.regQueue.freeRegisters + " varit lediga: " + two.format(state.totTimeFreeReg) +" te");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		System.out.println("Genomsnittlig ledig kassatid: " + two.format(state.totTimeFreeReg / state.payedCustomers) + " te (dvs " + "PROCENT" + "av tiden från öppning till sista kunden betalat) \n");
+=======
+		System.out.println("Genomsnittlig ledig kassatid: " + two.format(state.totTimeFreeReg / state.maxRegisters) + "te (dvs " + two.format(((state.totTimeFreeReg / state.maxRegisters)/state.timeElapsed)*100) + "% av tiden från öppning till sista kunden betalat) \n");
+>>>>>>> 75793d71ba8326f0e126c56c5f1fc86974054cf9
 =======
 		System.out.println("Genomsnittlig ledig kassatid: " + two.format(state.totTimeFreeReg / state.maxRegisters) + "te (dvs " + two.format(((state.totTimeFreeReg / state.maxRegisters)/state.timeElapsed)*100) + "% av tiden från öppning till sista kunden betalat) \n");
 >>>>>>> 75793d71ba8326f0e126c56c5f1fc86974054cf9
