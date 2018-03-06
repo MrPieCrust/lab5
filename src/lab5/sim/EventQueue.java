@@ -5,6 +5,11 @@ import java.util.Collections;
 import lab5.smallStore.Closes;
 import lab5.smallStore.SmallStoreState;
 
+/** 
+ * @author Jesper Persson, Leo Haglund, Sam Björedahl, Daniel Genberg
+ */
+
+
 public class EventQueue {
 	public ArrayList<Event> eventQueue;
 	public ArrayList<Event> queue;

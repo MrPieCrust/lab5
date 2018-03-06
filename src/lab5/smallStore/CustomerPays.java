@@ -50,12 +50,4 @@ public class CustomerPays extends Event {
 		state.regQueue.addFreeReg();
 	}
 
-	/**
-	 * returns the ID of a customer
-	 * 
-	 * @return - An int custID that represents the customer ID
-	 */
-	public int getCustID() {
-		return custID;
-	}
 }
