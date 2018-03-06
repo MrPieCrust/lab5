@@ -42,42 +42,21 @@ public class EventQueue {
 	}
 	public Event getEvent() {
 		queue = sort();
-<<<<<<< HEAD
 		state.timeBetween = queue.get(0).getExTime() - state.timeElapsed;
 		state.timeElapsed = queue.get(0).getExTime();
 		
-//		if(state.isfree()) {
-//			state.totTimeFreeReg = (state.timeElapsed) *state.regQueue.getFreeReg() - state.totTimeOccReg;
-//			
-////			state.totTimeFreeReg *= state.maxRegisters;
-//		}
-//		else {
-//			state.totTimeOccReg = (state.timeElapsed - state.totTimeFreeReg);
-//			 * state.regQueue.getFreeReg()
-//		}
-		
-		if(queue.size()>0) {
-=======
-		double timeBetween = queue.get(0).getExTime() - state.timeElapsed;
-		state.timeElapsed = queue.get(0).getExTime();
-		
+//		if(queue.size()>0) {
+//		double timeBetween = queue.get(0).getExTime() - state.timeElapsed;
+//		state.timeElapsed = queue.get(0).getExTime();
+//		
 		if (queue.size() > 0) {
-			if(state.isfree()) {
-				state.totTimeFreeReg += timeBetween * state.regQueue.getFreeReg();
-			}
->>>>>>> 5d82795d2d7ea8b6a24d05f431f7eb18281855a4
 			return queue.remove(0);
 		}
 		else {
 			return new Closes(state);
 		}
-<<<<<<< HEAD
 	}
 	public ArrayList<Event> getQueue() {
 		return queue;
 	}
-=======
-//	}
->>>>>>> 5d82795d2d7ea8b6a24d05f431f7eb18281855a4
-
-	}}
+}
