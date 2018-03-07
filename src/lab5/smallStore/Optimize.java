@@ -6,8 +6,7 @@ public class Optimize {
 	
 	
 	public int optimize() {
-		Main main = new Main();
-		main.main(null);
+		
 		return 0;
 	}
 }

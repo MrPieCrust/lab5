@@ -11,11 +11,8 @@ import lab5.smallStore.SmallStoreState;
  *
  */
 public class Main {
-<<<<<<< HEAD
 	
-=======
 	private static Simulator sim; 
->>>>>>> 9935df2c81a4190bd41876d8c96461d839f36c22
 	/**
 	 * Main method, creates a new object of simulator and uses its method run() so
 	 * the simulation can start.
@@ -24,22 +21,11 @@ public class Main {
 	 *            - no arguments given.
 	 */
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		SmallStoreState state = new SmallStoreState();
-		Simulator sim = new Simulator();
-=======
-		
+		Simulator sim = new Simulator();	
 		sim = new Simulator();
-		sim.state.maxRegisters = 10;
-//		optimize();
->>>>>>> 9935df2c81a4190bd41876d8c96461d839f36c22
+
 		sim.run();
 	}
 	
-	
-	
-	public static int optimize() {
-		sim.state.maxRegisters = 10;
-		return 0;
-	}
 }

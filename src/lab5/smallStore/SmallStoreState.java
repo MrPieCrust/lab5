@@ -28,7 +28,6 @@ public class SmallStoreState extends State {
 	double avTimeReg = 0;
 	double avTimeQueue = 0;
 	String status;
-<<<<<<< HEAD
 //	public final int maxCustomers = 5;
 //	public final int maxRegisters = 4;
 //	public final double closingTime = 10;
@@ -37,7 +36,6 @@ public class SmallStoreState extends State {
 //	public final double uniformLowerPay = 2.0;
 //	public final double uniformUpperPay = 3.0;
 //	public final double exponentLambda = 1;
-=======
 	public final int maxCustomers = 5;
 	public int maxRegisters = 4;
 	public final double closingTime = 10;
@@ -46,7 +44,6 @@ public class SmallStoreState extends State {
 	public final double uniformLowerPay = 2.0;
 	public final double uniformUpperPay = 3.0;
 	public final double exponentLambda = 1;
->>>>>>> 9935df2c81a4190bd41876d8c96461d839f36c22
 	CreateCustomer customerFactory;
 	public FIFO regQueue;
 	public SmallStoreView storeView;

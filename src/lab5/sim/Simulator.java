@@ -10,11 +10,8 @@ import lab5.smallStore.SmallStoreState;
  *
  */
 public class Simulator {
-<<<<<<< HEAD
 //	private SmallStoreState state;
-=======
 	public SmallStoreState state;
->>>>>>> 9935df2c81a4190bd41876d8c96461d839f36c22
 	private EventQueue eventQueue;
 
 	/**
