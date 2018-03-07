@@ -36,14 +36,14 @@ public class SmallStoreState extends State {
 //	public final double uniformLowerPay = 2.0;
 //	public final double uniformUpperPay = 3.0;
 //	public final double exponentLambda = 1;
-	public final int maxCustomers = 5;
-	public int maxRegisters = 4;
-	public final double closingTime = 10;
-	public final double uniformLowerShop = 0.5;
-	public final double uniformUpperShop = 1.0;
-	public final double uniformLowerPay = 2.0;
-	public final double uniformUpperPay = 3.0;
-	public final double exponentLambda = 1;
+	public final int maxCustomers;
+	public int maxRegisters;
+	public double closingTime;
+	public double uniformLowerShop = 0.5;
+	public double uniformUpperShop = 1.0;
+	public double uniformLowerPay = 2.0;
+	public double uniformUpperPay = 3.0;
+	public double exponentLambda = 1;
 	CreateCustomer customerFactory;
 	public FIFO regQueue;
 	public SmallStoreView storeView;
@@ -56,7 +56,16 @@ public class SmallStoreState extends State {
 	 * and SmallStoreView and assigns appropriate pointers for them. It also assigns
 	 * storeView as an Observer for the state and creates a new event of type Opens
 	 */
-	public SmallStoreState() {
+	public SmallStoreState(int maxRegisters, int maxCustomers, double closingTime, double uniformLowerShop, double uniformUpperShop,
+			double uniformLowerPay, double uniformUpperPay, double exponentLambda) {
+		this.maxRegisters = maxRegisters;
+		this.maxCustomers = maxCustomers;
+		this.closingTime = closingTime;
+		this.uniformLowerShop = uniformLowerShop;
+		this.uniformUpperShop = uniformUpperShop;
+		this.uniformLowerPay = uniformLowerPay;
+		this.uniformUpperPay = uniformUpperPay;
+		this.exponentLambda = exponentLambda;
 		regQueue = new FIFO(this);
 		customerFactory = new CreateCustomer();
 		timeKeeper = new TimeKeeper(this);

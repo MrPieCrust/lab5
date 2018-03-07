@@ -21,9 +21,8 @@ public class Main {
 	 *            - no arguments given.
 	 */
 	public static void main(String[] args) {
-		SmallStoreState state = new SmallStoreState();
-		Simulator sim = new Simulator();	
-		sim = new Simulator();
+		SmallStoreState state = new SmallStoreState(4, 5, 10, 0.5, 1.0, 2.0, 3.0, 1.0);
+		Simulator sim = new Simulator(state);	
 
 		sim.run();
 	}

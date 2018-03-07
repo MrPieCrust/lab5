@@ -10,16 +10,16 @@ import lab5.smallStore.SmallStoreState;
  *
  */
 public class Simulator {
-//	private SmallStoreState state;
-	public SmallStoreState state;
+	private SmallStoreState state;
+//	public SmallStoreState state;
 	private EventQueue eventQueue;
 
 	/**
 	 * Constructor, creates a new dynamic SmallStoreState object and assigns private
 	 * variable eventQueue to the states eventQueue.
 	 */
-	public Simulator() {
-//		this.state = new SmallStoreState();
+	public Simulator(SmallStoreState state) {
+		this.state = state;
 		this.eventQueue = state.eventQueue;
 	}
 
@@ -32,7 +32,17 @@ public class Simulator {
 				eventQueue.getEvent().performEvent();
 
 			}
-//			state.storeView.printResultOpt();
+			state.storeView.printResult();
+
+		}
+	}
+	public void runOptimize() {
+		while (state.stopFlag == false) {
+			while (eventQueue.queue.size() > 0) {
+				eventQueue.getEvent().performEvent();
+
+			}
+			state.storeView.printResultOpt();
 
 		}
 	}
