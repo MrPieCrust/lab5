@@ -10,7 +10,7 @@ import lab5.smallStore.SmallStoreState;
  *
  */
 public class Simulator {
-	private SmallStoreState state;
+	public SmallStoreState state;
 	private EventQueue eventQueue;
 
 	/**
@@ -31,7 +31,7 @@ public class Simulator {
 				eventQueue.getEvent().performEvent();
 
 			}
-			state.storeView.printResult();
+//			state.storeView.printResultOpt();
 
 		}
 	}

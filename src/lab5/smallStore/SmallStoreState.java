@@ -29,7 +29,7 @@ public class SmallStoreState extends State {
 	double avTimeQueue = 0;
 	String status;
 	public final int maxCustomers = 5;
-	public final int maxRegisters = 4;
+	public int maxRegisters = 4;
 	public final double closingTime = 10;
 	public final double uniformLowerShop = 0.5;
 	public final double uniformUpperShop = 1.0;

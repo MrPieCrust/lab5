@@ -10,7 +10,7 @@ import lab5.sim.Simulator;
  *
  */
 public class Main {
-
+	private static Simulator sim; 
 	/**
 	 * Main method, creates a new object of simulator and uses its method run() so
 	 * the simulation can start.
@@ -19,7 +19,17 @@ public class Main {
 	 *            - no arguments given.
 	 */
 	public static void main(String[] args) {
-		Simulator sim = new Simulator();
+		
+		sim = new Simulator();
+		sim.state.maxRegisters = 10;
+//		optimize();
 		sim.run();
+	}
+	
+	
+	
+	public static int optimize() {
+		sim.state.maxRegisters = 10;
+		return 0;
 	}
 }
