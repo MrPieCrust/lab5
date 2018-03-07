@@ -28,7 +28,15 @@ public class SmallStoreView extends View {
 		printParameters();
 
 	}
-
+	public void printParametersOpt() {
+		System.out.println("PARAMETRAR" + "\n=======");
+		System.out.println("Max som ryms, M..........: " + state.maxCustomers);
+		System.out.println("Ankomsthastighet, lamba..: " + state.exponentLambda);
+		System.out.println("Plocktider, [P_min..Pmax]: " + state.uniformLowerShop + ", " + state.uniformUpperShop);
+		System.out.println("Betaltider, [K_min..Kmax]: " + state.uniformLowerPay + ", " + state.uniformUpperPay);
+		System.out.println("Frö, f...................: " + state.fseed);
+		System.out.println("\n Stängning sker tiden " + state.closingTime + " och stop händelsen sker strax efter");
+	}
 	/**
 	 * Prints all the parameters of the simulation.
 	 */
@@ -86,4 +94,7 @@ public class SmallStoreView extends View {
 		System.out.println("Genomsnittlig kötid: " + two.format(state.totTimeInQueue / state.numInQueue) + "te");
 	}
 
+	public void printResultOpt() {
+		System.out.println("Minsta antal kassor som ger minimalt antal missade ():");
+	}
 }
