@@ -10,7 +10,7 @@ import lab5.smallStore.SmallStoreState;
  *
  */
 public class Simulator {
-	private SmallStoreState state;
+//	private SmallStoreState state;
 	private EventQueue eventQueue;
 
 	/**
@@ -18,7 +18,7 @@ public class Simulator {
 	 * variable eventQueue to the states eventQueue.
 	 */
 	public Simulator() {
-		this.state = new SmallStoreState();
+//		this.state = new SmallStoreState();
 		this.eventQueue = state.eventQueue;
 	}
 
